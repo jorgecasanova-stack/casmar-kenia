@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1" />
+<meta name="theme-color" content="#0E1B25" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="CASMAR" />
+<link rel="manifest" href="manifest.webmanifest" />
+<link rel="apple-touch-icon" href="icons/icon-192.png" />
+<title>CASMAR KENIA</title>
+<style>
+  :root{
+    --bg:#0E1B25; --card:#17262F; --soft:#21333D; --accent:#F2A65A;
+    --text:#F4EEE0; --muted:#9FB1BD; --green:#5BD08A; --border:#2B3C46; --nav:60px;
+    /* colores de Kenia */
+    --red:#C0392B; --kgreen:#2E8B57; --ochre:#E3922B; --maasai:#B5341F; --teal:#1F8A8A; --grape:#7B4BB7;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{margin:0;color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+  body{min-height:100vh;padding-bottom:calc(var(--nav) + env(safe-area-inset-bottom));
+    background:radial-gradient(120% 80% at 50% 0%, #163142 0%, #0E1B25 55%, #0A141C 100%) fixed}
+  .serif{font-family:Georgia,"Times New Roman",serif}
+  .topbar{position:sticky;top:0;z-index:20;background:rgba(11,20,28,.92);backdrop-filter:blur(8px);
+    display:flex;align-items:center;justify-content:space-between;padding:10px 16px;border-bottom:1px solid var(--border)}
+  .brand{display:flex;align-items:center;gap:8px;background:none;border:0;color:var(--text);font-weight:800;font-size:17px;letter-spacing:.3px;cursor:pointer;padding:0;user-select:none}
+  .brand small{color:var(--accent)}
+  .brand #brandLogo{display:flex}
+
+  /* ---- PORTADA (lanzadera) ---- */
+  .home{padding-top:6px}
+  .hello{display:flex;align-items:center;gap:14px;margin:6px 0 20px}
+  .hello .hi{font-size:30px;font-weight:800;line-height:1}
+  .hello .histat{color:var(--muted);font-size:13px;font-weight:600;margin-top:4px}
+  .tiles{display:grid;grid-template-columns:repeat(2,1fr);gap:13px}
+  .tile{border:0;border-radius:20px;padding:18px 16px;min-height:128px;color:#fff;cursor:pointer;
+    display:flex;flex-direction:column;align-items:flex-start;text-align:left;box-shadow:0 6px 18px rgba(0,0,0,.28);position:relative;overflow:hidden}
+  .tile::after{content:"";position:absolute;right:-20px;bottom:-20px;width:90px;height:90px;border-radius:50%;background:rgba(255,255,255,.10)}
+  .tile .tie{font-size:34px;line-height:1}
+  .tile .tin{font-size:19px;font-weight:800;margin-top:auto;padding-top:14px}
+  .tile .tis{font-size:12.5px;font-weight:600;opacity:.92;margin-top:2px}
+  .t-viaje{background:linear-gradient(150deg,#2E8B57,#143d2a)}
+  .t-safari{background:linear-gradient(150deg,#E3922B,#7c4310)}
+  .t-fotos{background:linear-gradient(150deg,#C0392B,#5e1610)}
+  .t-vlog{background:linear-gradient(150deg,#7B4BB7,#311a55)}
+  .t-conv{background:linear-gradient(150deg,#1F8A8A,#0c3535)}
+  .t-suajili{background:linear-gradient(150deg,#B5341F,#1c1c1c)}
+  .topright{display:flex;align-items:center;gap:10px}
+  .daychip{font-size:12px;font-weight:700;color:var(--accent);border:1px solid var(--border);border-radius:20px;padding:4px 10px}
+  .iconbtn{background:none;border:0;color:var(--muted);font-size:18px;cursor:pointer;padding:4px}
+  .wrap{max-width:620px;margin:0 auto;padding:14px 16px 24px}
+  .kicker{font-size:12px;font-weight:800;letter-spacing:1.5px;margin:2px 0 8px;color:var(--accent)}
+  .section{font-size:19px;font-weight:800;margin:22px 0 10px}
+  .muted{color:var(--muted)} .small{font-size:13px}
+
+  /* banner aviso */
+  .banner{display:flex;gap:10px;align-items:center;background:var(--card);border:1px solid var(--accent);
+    border-radius:14px;padding:12px 14px;margin-bottom:14px}
+  .banner .bemoji{font-size:24px}
+  .banner b{display:block;font-size:14px}
+  .banner .small{color:var(--muted)}
+  .banner button{margin-left:auto;background:var(--accent);color:#1a1500;border:0;font-weight:800;
+    padding:8px 14px;border-radius:20px;cursor:pointer;font-size:13px;white-space:nowrap}
+
+  /* HERO día de hoy */
+  .hero{border-radius:20px;overflow:hidden;position:relative;cursor:pointer;padding:18px 16px 16px;min-height:150px;
+    display:flex;flex-direction:column;justify-content:flex-end;border:1px solid rgba(255,255,255,.06)}
+  .hero .he{font-size:30px}
+  .hero .lbl{font-size:11px;font-weight:800;letter-spacing:2px;margin-top:8px}
+  .hero .nm{font-size:26px;font-weight:700;line-height:1.1;margin:4px 0}
+  .hero .pl{font-size:13px;opacity:.85}
+  .hero .pill{margin-top:12px;align-self:flex-start;background:rgba(0,0,0,.35);color:#fff;font-weight:700;
+    font-size:13px;padding:8px 14px;border-radius:30px}
+
+  /* fila día */
+  .row{display:flex;align-items:center;background:var(--card);border-radius:14px;padding:12px;margin-bottom:9px;cursor:pointer;border:1px solid var(--border)}
+  .row .ic{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex:0 0 auto}
+  .row .body{flex:1;margin-left:12px;min-width:0}
+  .row .d1{font-size:12px;font-weight:700}
+  .row .d2{font-size:15px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .row .d3{color:var(--muted);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .row.now{border-color:var(--accent)}
+  .tagnow{font-size:10px;font-weight:800;color:#1a1500;background:var(--accent);border-radius:6px;padding:2px 6px;margin-left:6px}
+  .chev{color:var(--muted);font-size:20px;margin-left:6px}
+  .pcount{font-size:11px;color:var(--muted);margin-top:2px}
+
+  /* detalle día */
+  .dcover{border-radius:18px;padding:22px 18px;min-height:140px;display:flex;flex-direction:column;justify-content:flex-end}
+  .back{background:none;border:0;color:var(--accent);font-weight:700;font-size:15px;cursor:pointer;padding:0;margin-bottom:6px}
+  .meta{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+  .mtag{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:6px 12px;font-size:13px}
+  .mtag b{color:var(--accent)}
+  .scriptbox{color:var(--text);font-size:16px;line-height:1.65;white-space:pre-wrap;margin-top:6px}
+  /* desplegables (sitio / alojamiento) */
+  .acc{background:var(--card);border:1px solid var(--border);border-radius:14px;margin:10px 0}
+  .acc summary{list-style:none;display:flex;align-items:center;gap:12px;padding:14px;cursor:pointer}
+  .acc summary::-webkit-details-marker{display:none}
+  .acc .aemoji{font-size:22px;flex:0 0 auto}
+  .acc .atext{flex:1;min-width:0}
+  .acc .atext b{display:block;font-size:15px}
+  .acc .ahint{color:var(--muted);font-size:12px}
+  .acc .achev{color:var(--accent);transition:transform .2s;flex:0 0 auto}
+  .acc[open] .achev{transform:rotate(180deg)}
+  .accbody{padding:0 16px 8px}
+  .igt{color:var(--accent);font-size:11px;font-weight:800;letter-spacing:.6px;margin:8px 0 4px}
+  .accbody ul{margin:0 0 4px;padding-left:18px}
+  .accbody li{color:var(--text);font-size:14px;line-height:1.5;margin-bottom:6px}
+  /* día / noche + servicios */
+  .dsec{font-size:17px;font-weight:800;margin:24px 0 10px;display:flex;align-items:center;gap:8px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+  .dsec .dse{font-size:18px}
+  .nightname{font-size:18px;font-weight:700;margin-bottom:12px}
+  .amen{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px}
+  .amchip{display:flex;align-items:center;gap:6px;background:var(--card);border:1px solid var(--border);border-radius:20px;padding:7px 12px;font-size:13px;font-weight:600}
+  .amchip .ae{font-size:16px}
+
+  /* player */
+  .track{height:7px;border-radius:4px;background:var(--soft);margin-top:18px;overflow:hidden;cursor:pointer}
+  .track>i{display:block;height:100%;background:var(--accent);width:0}
+  .times{display:flex;justify-content:space-between;color:var(--muted);font-size:12px;margin-top:6px}
+  .controls{display:flex;align-items:center;justify-content:center;gap:28px;margin-top:14px}
+  .ctrl{background:none;border:0;color:var(--text);font-size:15px;font-weight:700;cursor:pointer}
+  .playbtn{width:66px;height:66px;border-radius:50%;background:var(--accent);color:#1a1500;border:0;font-size:24px;cursor:pointer}
+
+  /* botones */
+  .btn{background:var(--accent);color:#1a1500;border:0;font-weight:800;padding:12px 18px;border-radius:14px;cursor:pointer;font-size:15px}
+  .btn.full{display:block;width:100%;margin-top:12px}
+  .btn.ghost{background:var(--card);border:1px solid var(--border);color:var(--accent)}
+  .btn.sm{padding:8px 14px;font-size:13px;border-radius:20px}
+
+  /* conversor */
+  .conv{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:18px}
+  .field{display:flex;align-items:center;gap:10px;background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:12px 14px;margin:10px 0}
+  .field span.cur{font-weight:800;color:var(--accent);font-size:15px;width:42px}
+  .field input{flex:1;background:none;border:0;color:var(--text);font-size:24px;font-weight:700;outline:none;text-align:right;min-width:0}
+  .swap{display:block;margin:2px auto;background:var(--soft);border:1px solid var(--border);color:var(--accent);width:38px;height:38px;border-radius:50%;cursor:pointer;font-size:16px}
+  .rate{color:var(--muted);font-size:13px;text-align:center;margin-top:10px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+  .chip{background:var(--soft);border:1px solid var(--border);color:var(--text);border-radius:20px;padding:7px 12px;font-size:13px;cursor:pointer}
+  .field .rm{background:none;border:0;color:var(--muted);font-size:20px;cursor:pointer;padding:0 2px;flex:0 0 auto}
+  .addccy{margin:12px 0 4px}
+  .addccy select{width:100%;padding:11px 12px;border-radius:12px;border:1px solid var(--border);background:var(--bg);color:var(--text);font-size:15px}
+  .swplay{background:var(--soft);border:1px solid var(--border);color:var(--accent);width:40px;height:40px;border-radius:50%;font-size:16px;cursor:pointer;flex:0 0 auto;margin-right:10px}
+  .swplay.on{background:var(--accent);color:#1a1500}
+
+  /* recuerdos / vlog */
+  .daycard{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:14px;margin-bottom:12px}
+  .daycard .hd{display:flex;align-items:center;gap:10px}
+  .daycard .hd .ic{font-size:20px}
+  .daycard .hd .t{font-weight:700;font-size:15px}
+  .daycard .hd .s{color:var(--muted);font-size:12px}
+  .prog{margin-left:auto;font-size:13px;font-weight:800}
+  .prog.ok{color:var(--green)} .prog.no{color:var(--accent)}
+  .thumbs{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:10px}
+  .thumbs img,.thumbs video{width:100%;aspect-ratio:1;object-fit:cover;border-radius:8px;background:var(--soft)}
+  .thumbwrap{position:relative}
+  .thumbwrap .del{position:absolute;top:-6px;right:-6px;background:#b33;color:#fff;border:0;border-radius:50%;width:20px;height:20px;font-size:12px;cursor:pointer;line-height:1}
+  .addbtn{margin-top:10px}
+  .vidlist video{width:100%;border-radius:12px;margin-top:10px;background:#000}
+  .vidrow{margin-top:12px}
+  .vidrow .vmeta{display:flex;gap:8px;margin-top:6px}
+  .cardbtns{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+
+  /* bingo */
+  .bingo{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}
+  .bcell{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:10px 6px;text-align:center;font-size:13px;font-weight:700;cursor:pointer;user-select:none}
+  .bcell.on{background:var(--soft);border-color:var(--green);color:var(--green)}
+  .bcell .x{display:block;font-size:16px}
+
+  /* tiempo */
+  .wx{display:flex;gap:10px;margin:4px 0 14px}
+  .wxbox{flex:1;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:11px 13px;min-width:0}
+  .wxbox .wl{font-size:11px;font-weight:800;letter-spacing:.5px;color:var(--muted)}
+  .wxbox .wz{font-size:13px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .wxbox .wt{font-size:24px;font-weight:800;margin-top:2px}
+  .wxbox .wt small{font-size:13px;color:var(--muted);font-weight:700}
+  .wxbox .we{font-size:18px}
+
+  /* mapa */
+  .mapcard{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:10px}
+  .mapcard svg{display:block;width:100%;height:auto}
+  .mapcard.leaflet{height:330px;padding:0;overflow:hidden}
+  .mapcard.leaflet .leaflet-container{height:100%;width:100%;background:#0a141c;border-radius:17px;font-family:inherit}
+  .lmwrap{background:none;border:0}
+  .lmk{width:14px;height:14px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 2px rgba(0,0,0,.45)}
+  .lmk.cur{width:17px;height:17px;margin:-1.5px;animation:lpulse 2s infinite}
+  @keyframes lpulse{0%{box-shadow:0 0 0 0 rgba(255,255,255,.6)}70%{box-shadow:0 0 0 12px rgba(255,255,255,0)}100%{box-shadow:0 0 0 0 rgba(255,255,255,0)}}
+  .lmlbl{position:absolute;left:18px;top:-3px;white-space:nowrap;color:#fff;font-size:11px;font-weight:800;text-shadow:0 1px 3px rgba(0,0,0,.95)}
+  .leaflet-control-zoom{border:0!important}
+  .leaflet-control-zoom a{background:rgba(11,20,28,.9)!important;color:var(--accent)!important;border-color:var(--border)!important}
+
+  /* safari (rejilla con foto) */
+  .sgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:8px}
+  .scell{position:relative;background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;aspect-ratio:1;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+  .scell.on{border-color:var(--green)}
+  .scell img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .scell .sov{position:absolute;inset:0;background:linear-gradient(transparent 45%,rgba(0,0,0,.7));pointer-events:none}
+  .scell .snm{position:relative;z-index:2;font-size:13px;font-weight:700;padding:0 4px}
+  .scell.has .snm{position:absolute;bottom:6px;left:0;right:0;color:#fff}
+  .scell .scheck{position:absolute;top:6px;right:6px;z-index:3;width:22px;height:22px;border-radius:50%;background:var(--green);color:#06200f;font-size:13px;display:flex;align-items:center;justify-content:center}
+  .scell .scam{position:relative;z-index:2;font-size:20px;opacity:.5;margin-bottom:4px}
+  .scell.has .scam{display:none}
+
+  /* nav */
+  .nav{position:fixed;left:0;right:0;bottom:0;z-index:30;display:flex;background:rgba(11,20,28,.96);
+    backdrop-filter:blur(8px);border-top:1px solid var(--border);padding-bottom:env(safe-area-inset-bottom)}
+  .nav button{flex:1;background:none;border:0;color:var(--muted);font-size:10px;font-weight:700;padding:8px 0 9px;cursor:pointer;height:var(--nav)}
+  .nav button .ne{display:block;font-size:19px;margin-bottom:2px;filter:grayscale(1) opacity(.7)}
+  .nav button.on{color:var(--accent)} .nav button.on .ne{filter:none}
+
+  .center{text-align:center;color:var(--muted);padding:40px 16px}
+  input[type=file]{display:none}
+  dialog{border:0;background:var(--card);color:var(--text);border-radius:16px;padding:20px;max-width:340px;width:90%}
+  dialog::backdrop{background:rgba(0,0,0,.6)}
+  dialog input[type=date]{width:100%;padding:10px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--text);font-size:16px;margin:12px 0}
+  #shareDlg{max-width:380px}
+  .shtipos{display:flex;gap:8px;margin:12px 0}
+  #shareText{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:12px;color:var(--text);font-size:14px;padding:11px;font-family:inherit;resize:vertical;line-height:1.5}
+  .share-btn{position:absolute;top:-6px;left:-6px;background:#1f8a8a;color:#fff;border:0;border-radius:50%;width:22px;height:22px;font-size:12px;cursor:pointer;line-height:1;z-index:2}
+</style>
+</head>
+<body>
+  <div class="topbar">
+    <button class="brand" id="brandBtn" title="Inicio"><span id="brandLogo"></span> CASMAR <small>KENIA</small></button>
+    <div class="topright">
+      <span class="daychip" id="daychip">—</span>
+      <button class="iconbtn" id="cfgBtn" title="Ajustes">⚙️</button>
+    </div>
+  </div>
+
+  <div class="wrap" id="screen"></div>
+
+  <nav class="nav" id="nav">
+    <button data-tab="viaje" class="on"><span class="ne">🗺️</span>Viaje</button>
+    <button data-tab="safari"><span class="ne">🦁</span>Safari</button>
+    <button data-tab="conv"><span class="ne">💱</span>Cambio</button>
+    <button data-tab="fotos"><span class="ne">📸</span>Fotos</button>
+    <button data-tab="vlog"><span class="ne">🎥</span>Vlog</button>
+    <button data-tab="suajili"><span class="ne">🗣️</span>Suajili</button>
+  </nav>
+
+  <dialog id="shareDlg">
+    <b>Compartir en Instagram</b>
+    <div class="shtipos" id="shtipos"></div>
+    <textarea id="shareText" rows="5"></textarea>
+    <p class="small muted" id="shareHint" style="margin:4px 0 12px"></p>
+    <div style="display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap">
+      <button class="btn ghost sm" id="shareCopy">📋 Copiar texto</button>
+      <button class="btn ghost sm" id="shareClose">Cerrar</button>
+      <button class="btn sm" id="shareGo">📤 Compartir</button>
+    </div>
+  </dialog>
+
+  <dialog id="cfgDlg">
+    <b>Fecha de salida</b>
+    <p class="small muted">El día que sale tu vuelo (28). La app marca "hoy" a partir de aquí.</p>
+    <input type="date" id="cfgDate" />
+    <div style="display:flex;gap:10px;justify-content:flex-end">
+      <button class="btn ghost sm" id="cfgCancel">Cancelar</button>
+      <button class="btn sm" id="cfgSave">Guardar</button>
+    </div>
+  </dialog>
+
+<script>
+const $ = (id) => document.getElementById(id);
+const screen = $('screen');
+const esc = (t)=>(t||'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+const fmt = (s)=>{s=Math.floor(s||0);return Math.floor(s/60)+':'+String(s%60).padStart(2,'0');};
+
+let M=null, tab='home', dayId=null;
+const REGION = (k)=> (M.regions[k] || M.regions.vuelo);
+
+function shieldSVG(h){ return `<svg viewBox="0 0 100 132" height="${h}" xmlns="http://www.w3.org/2000/svg" style="display:block">
+  <g stroke="#F4EEE0" stroke-width="6" stroke-linecap="round"><line x1="28" y1="14" x2="72" y2="120"/><line x1="72" y1="14" x2="28" y2="120"/></g>
+  <polygon points="28,5 21,21 35,21" fill="#F4EEE0"/><polygon points="72,5 65,21 79,21" fill="#F4EEE0"/>
+  <ellipse cx="50" cy="66" rx="30" ry="44" fill="#F4EEE0"/>
+  <ellipse cx="50" cy="66" rx="26" ry="40" fill="#B5341F"/>
+  <ellipse cx="50" cy="66" rx="26" ry="12" fill="#F4EEE0"/>
+  <ellipse cx="50" cy="66" rx="22" ry="8.5" fill="#181818"/>
+  <rect x="48.5" y="30" width="3" height="72" fill="#e0c8b4" opacity=".5"/></svg>`; }
+
+/* ---------- estado local ---------- */
+const lsGet=(k,d)=>{try{return JSON.parse(localStorage.getItem(k))??d}catch(e){return d}};
+const lsSet=(k,v)=>localStorage.setItem(k,JSON.stringify(v));
+function startDate(){
+  let s=localStorage.getItem('kenia.start'); if(!s){s=M.departureDefault;localStorage.setItem('kenia.start',s);}
+  return new Date(s+'T00:00:00');
+}
+const DAYMS=86400000;
+function todayOffset(){
+  const t=new Date(); const today=new Date(t.getFullYear(),t.getMonth(),t.getDate());
+  return Math.round((today - startDate())/DAYMS);
+}
+function dateFor(offset){ const d=new Date(startDate().getTime()+offset*DAYMS); return d; }
+function fmtDate(d){
+  const dias=['dom','lun','mar','mié','jue','vie','sáb'];
+  const mes=['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+  return `${dias[d.getDay()]} ${d.getDate()} ${mes[d.getMonth()]}`;
+}
+function activeDay(){
+  const off=todayOffset();
+  if(off<0) return {phase:'pre', day:M.days[0], off};
+  if(off>16) return {phase:'post', day:M.days[16], off};
+  return {phase:'during', day:M.days.find(d=>d.offset===off)||M.days[0], off};
+}
+
+/* ---------- IndexedDB (fotos y vídeos) ---------- */
+let _db=null;
+function db(){ return new Promise((res,rej)=>{ if(_db) return res(_db);
+  const r=indexedDB.open('kenia',1);
+  r.onupgradeneeded=()=>{ const d=r.result; if(!d.objectStoreNames.contains('media')) d.createObjectStore('media',{keyPath:'key',autoIncrement:true}); };
+  r.onsuccess=()=>{_db=r.result;res(_db)}; r.onerror=()=>rej(r.error);
+});}
+async function mediaAdd(o){ const d=await db(); return new Promise((res,rej)=>{ const tx=d.transaction('media','readwrite'); tx.objectStore('media').add(o); tx.oncomplete=()=>res(); tx.onerror=()=>rej(tx.error);});}
+async function mediaAll(){ const d=await db(); return new Promise((res,rej)=>{ const out=[]; const c=d.transaction('media').objectStore('media').openCursor(); c.onsuccess=e=>{const cur=e.target.result; if(cur){out.push(cur.value);cur.continue();}else res(out);}; c.onerror=()=>rej(c.error);});}
+async function mediaDel(key){ const d=await db(); return new Promise((res)=>{ const tx=d.transaction('media','readwrite'); tx.objectStore('media').delete(key); tx.oncomplete=()=>res();});}
+
+/* gestión de object URLs por pantalla */
+let urls=[]; function objUrl(b){const u=URL.createObjectURL(b);urls.push(u);return u;}
+function clearUrls(){urls.forEach(u=>URL.revokeObjectURL(u));urls=[];}
+
+/* ---------- arranque ---------- */
+async function init(){
+  if('serviceWorker' in navigator){ try{ await navigator.serviceWorker.register('sw.js'); }catch(e){} }
+  try{
+    const res=await fetch('manifest.json?t='+Date.now(),{cache:'no-store'});
+    M=await res.json();
+    $('brandLogo').innerHTML=shieldSVG(22);
+    render();
+    if(navigator.onLine){ fetchFx().then(()=>{ if(tab==='conv') renderConv(); }); }
+    setInterval(checkReminder, 60000); setTimeout(checkReminder, 1500);
+  }catch(e){
+    screen.innerHTML='<div class="center">No se pudo cargar el contenido.<br>Revisa la conexión.<br><br><button class="btn" onclick="init()">Reintentar</button></div>';
+  }
+}
+function setTab(t){ tab=t; dayId=null; [...$('nav').children].forEach(b=>b.classList.toggle('on',b.dataset.tab===t)); render(); window.scrollTo(0,0); }
+$('nav').addEventListener('click',e=>{const b=e.target.closest('button'); if(b) setTab(b.dataset.tab);});
+
+function render(){
+  clearUrls();
+  if(_lmap && !(tab==='viaje' && !dayId)){ try{_lmap.remove();}catch(e){} _lmap=null; }
+  const ad=activeDay();
+  $('daychip').textContent = ad.phase==='pre' ? `faltan ${-ad.off} días`
+    : ad.phase==='post' ? '¡buen regreso!' : `Día ${ad.off+1} de 17`;
+  $('nav').style.display = (tab==='home') ? 'none' : 'flex';
+  document.body.style.paddingBottom = (tab==='home') ? 'env(safe-area-inset-bottom)' : '';
+  if(tab==='home') renderHome(ad);
+  else if(tab==='viaje') dayId?renderDay():renderViaje(ad);
+  else if(tab==='safari') renderSafari();
+  else if(tab==='conv') renderConv();
+  else if(tab==='fotos') renderFotos(ad);
+  else if(tab==='vlog') renderVlog(ad);
+  else renderSuajili();
+}
+function goHome(){ tab='home'; dayId=null; render(); window.scrollTo(0,0); }
+
+/* ================= PORTADA (lanzadera) ================= */
+async function renderHome(ad){
+  const media=await mediaAll();
+  const photos=media.filter(m=>m.kind==='photo').length;
+  const vids=media.filter(m=>m.kind==='video').length;
+  const bg=lsGet('kenia.bingo',{});
+  const seen=new Set([...Object.keys(bg).filter(k=>bg[k]), ...media.filter(m=>m.kind==='bingo').map(m=>m.day)]);
+  const safariN=M.bingo.filter(a=>seen.has(a)).length;
+  const fx=fxData();
+  const frases=M.swahili.reduce((n,g)=>n+g.items.length,0);
+  const dayStatus = ad.phase==='pre' ? `Faltan ${-ad.off} días para Kenia`
+    : ad.phase==='post' ? '¡Buen regreso a casa!' : `Día ${ad.off+1} de 17 · ${REGION(ad.day.region).name}`;
+  const tiles=[
+    {t:'viaje',  icon:'🗺️', name:'El viaje',  sub:dayStatus},
+    {t:'safari', icon:'🦁', name:'Safari',    sub:`${safariN}/${M.bingo.length} animales vistos`},
+    {t:'fotos',  icon:'📸', name:'Recuerdos', sub:`${photos} foto${photos===1?'':'s'} guardadas`},
+    {t:'vlog',   icon:'🎥', name:'Videoblog', sub:`${vids} vídeo${vids===1?'':'s'}`},
+    {t:'conv',   icon:'💱', name:'Cambio',    sub: fx?`1 € ≈ ${fmtMoney(fx.rates.KES,'KES')} KES`:'Conversor de moneda'},
+    {t:'suajili',icon:'🗣️', name:'Suajili',   sub:`${frases} frases con audio`},
+  ];
+  screen.innerHTML=`<div class="home">
+    <div class="hello">${shieldSVG(60)}<div><div class="hi">Jambo 👋</div><div class="histat">${esc(dayStatus)}</div></div></div>
+    <div class="tiles">`+tiles.map(x=>`<button class="tile t-${x.t}" onclick="setTab('${x.t}')">
+      <span class="tie">${x.icon}</span><span class="tin">${esc(x.name)}</span><span class="tis">${esc(x.sub)}</span></button>`).join('')+`</div></div>`;
+}
+
+/* ================= VIAJE ================= */
+function renderViaje(ad){
+  const r=REGION(ad.day.region);
+  let html='';
+  if(ad.phase==='pre') html+=`<div class="kicker">PREPARANDO LA AVENTURA</div>`;
+  else if(ad.phase==='post') html+=`<div class="kicker">VIAJE COMPLETADO</div>`;
+  else html+=`<div class="kicker">HOY · ${esc(fmtDate(dateFor(ad.day.offset)))}</div>`;
+
+  html+=`<div id="wxstrip"></div>`;
+
+  html+=`<div class="hero" style="background:linear-gradient(160deg,${r.bg},#0a141c)" onclick="openDay('${ad.day.id}')">
+      <div class="he">${r.emoji}</div>
+      <div class="lbl" style="color:${r.accent}">${esc(r.name).toUpperCase()}</div>
+      <div class="nm serif">${esc(ad.day.title)}</div>
+      <div class="pl">${esc(ad.day.place)}</div>
+      <div class="pill">Ver el día de hoy ›</div>
+    </div>`;
+
+  html+=`<div class="section">Tu ruta por Kenia</div><div class="mapcard" id="mapbox"></div>`;
+
+  html+=`<div class="section">Itinerario</div>`;
+  html+=M.days.map(d=>{
+    const rg=REGION(d.region), isNow=ad.phase==='during'&&d.id===ad.day.id;
+    return `<div class="row ${isNow?'now':''}" onclick="openDay('${d.id}')">
+      <div class="ic" style="background:${rg.bg};color:${rg.accent}">${rg.emoji}</div>
+      <div class="body">
+        <div class="d1" style="color:${rg.accent}">${esc(fmtDate(dateFor(d.offset)))} ${isNow?'<span class="tagnow">HOY</span>':''}</div>
+        <div class="d2">${esc(d.title)}</div>
+        <div class="d3">${esc(d.lodging)}</div>
+      </div><div class="chev">›</div></div>`;
+  }).join('');
+
+  screen.innerHTML=html;
+  renderWeather(ad);
+  mountMap(ad);
+}
+function openDay(id){ dayId=id; tab='viaje'; [...$('nav').children].forEach(b=>b.classList.toggle('on',b.dataset.tab==='viaje')); render(); window.scrollTo(0,0); }
+
+/* ---------- mapa offline ---------- */
+const ACC='#F2A65A', MUT='#9FB1BD';
+function proj(lat,lon){ return [ (lon-33.5)*(300/9), (5.5-lat)*(350/10.5) ]; }
+function buildMap(ad){
+  const P=(ll)=>proj(ll[0],ll[1]);
+  const bpath=M.border.map(([lon,lat],i)=>{const p=P([lat,lon]);return (i?'L':'M')+p[0].toFixed(1)+' '+p[1].toFixed(1);}).join(' ')+' Z';
+  const stops=M.route.map(k=>({k,p:P(M.regions[k].ll),r:M.regions[k]}));
+  const line=stops.map((s,i)=>(i?'L':'M')+s.p[0].toFixed(1)+' '+s.p[1].toFixed(1)).join(' ');
+  const cur = ad.phase==='during'?ad.day.region : (ad.phase==='post'?'nairobi':null);
+  const seen={}; let markers='';
+  stops.forEach(s=>{ if(seen[s.k])return; seen[s.k]=1;
+    const isCur=s.k===cur, x=s.p[0], y=s.p[1], right=x>150;
+    if(isCur) markers+=`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="6" fill="none" stroke="#fff" stroke-width="1.5"><animate attributeName="r" values="6;15;6" dur="2s" repeatCount="indefinite"/><animate attributeName="opacity" values=".8;0;.8" dur="2s" repeatCount="indefinite"/></circle>`;
+    markers+=`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${isCur?6:4}" fill="${isCur?'#fff':s.r.accent}" stroke="${s.r.accent}" stroke-width="2"/>`;
+    markers+=`<text x="${(x+(right?-7:7)).toFixed(1)}" y="${(y+3.5).toFixed(1)}" fill="${isCur?'#fff':MUT}" font-size="11" font-weight="${isCur?'800':'600'}" text-anchor="${right?'end':'start'}">${esc(s.r.name)}</text>`;
+  });
+  return `<svg viewBox="0 0 300 350" xmlns="http://www.w3.org/2000/svg">
+    <path d="${bpath}" fill="rgba(242,166,90,.06)" stroke="#3a4a55" stroke-width="1.5" stroke-linejoin="round"/>
+    <path d="${line}" fill="none" stroke="${ACC}" stroke-width="2" stroke-dasharray="5 4" opacity=".85" stroke-linejoin="round" stroke-linecap="round"/>
+    ${markers}</svg>`;
+}
+
+let _lmap=null, _leafletP=null;
+function loadLeaflet(){
+  if(window.L) return Promise.resolve(true);
+  if(_leafletP) return _leafletP;
+  _leafletP=new Promise((res)=>{
+    const css=document.createElement('link'); css.rel='stylesheet'; css.href='https://unpkg.com/leaflet@1.9.4/dist/leaflet.css'; document.head.appendChild(css);
+    const s=document.createElement('script'); s.src='https://unpkg.com/leaflet@1.9.4/dist/leaflet.js'; s.onload=()=>res(true); s.onerror=()=>res(false); document.head.appendChild(s);
+  });
+  return _leafletP;
+}
+function mountMap(ad){
+  const el=$('mapbox'); if(!el) return;
+  el.classList.remove('leaflet'); el.innerHTML=buildMap(ad);   // dibujo offline al instante
+  if(!navigator.onLine) return;
+  loadLeaflet().then(ok=>{                                      // con wifi: mejora a satélite
+    if(!ok || tab!=='viaje' || dayId) return;
+    const el2=$('mapbox'); if(!el2) return;
+    try{ if(_lmap){_lmap.remove();_lmap=null;} el2.classList.add('leaflet'); el2.innerHTML=''; _lmap=initLeaflet(el2,ad); }
+    catch(e){ el2.classList.remove('leaflet'); el2.innerHTML=buildMap(ad); }
+  });
+}
+function initLeaflet(el, ad){
+  const map=L.map(el,{zoomControl:true,attributionControl:false,scrollWheelZoom:false});
+  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{maxZoom:17}).addTo(map);
+  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}',{maxZoom:17,opacity:.9}).addTo(map);
+  L.polyline(M.route.map(k=>M.regions[k].ll),{color:'#F2A65A',weight:3,dashArray:'7 6',opacity:.95}).addTo(map);
+  const cur = ad.phase==='during'?ad.day.region : (ad.phase==='post'?'nairobi':null);
+  const seen={}, bounds=[];
+  M.route.forEach(k=>{ if(seen[k])return; seen[k]=1; const r=M.regions[k]; bounds.push(r.ll);
+    const html=`<div class="lmk ${k===cur?'cur':''}" style="background:${r.accent}"></div><div class="lmlbl">${esc(r.name)}</div>`;
+    L.marker(r.ll,{icon:L.divIcon({className:'lmwrap',html,iconSize:[14,14],iconAnchor:[7,7]})}).addTo(map);
+  });
+  map.fitBounds(bounds,{padding:[40,48]});
+  setTimeout(()=>map.invalidateSize(),120);
+  return map;
+}
+
+/* ---------- tiempo (open-meteo, gratis sin key) ---------- */
+function wxIcon(c){ if(c==null)return'🌡️'; if(c===0)return'☀️'; if(c<=3)return'⛅'; if(c<=48)return'🌫️'; if(c<=67)return'🌧️'; if(c<=77)return'❄️'; if(c<=82)return'🌦️'; return'⛈️'; }
+const wxStore=()=>lsGet('kenia.wx',{});
+function dayByOffset(o){ o=Math.max(0,Math.min(16,o)); return M.days.find(d=>d.offset===o)||M.days[0]; }
+async function wxFetch(k){
+  const ll=M.regions[k].ll;
+  const url=`https://api.open-meteo.com/v1/forecast?latitude=${ll[0]}&longitude=${ll[1]}&current=temperature_2m,weather_code&daily=temperature_2m_max,temperature_2m_min,weather_code&timezone=Africa%2FNairobi&forecast_days=2`;
+  const j=await (await fetch(url,{cache:'no-store'})).json();
+  const s=wxStore();
+  s[k]={ts:Date.now(), t:Math.round(j.current.temperature_2m), code:j.current.weather_code,
+    daily:j.daily.time.map((d,i)=>({date:d,max:Math.round(j.daily.temperature_2m_max[i]),min:Math.round(j.daily.temperature_2m_min[i]),code:j.daily.weather_code[i]}))};
+  lsSet('kenia.wx',s); return s[k];
+}
+async function renderWeather(ad){
+  const strip=$('wxstrip'); if(!strip) return;
+  const todK=dayByOffset(ad.off).region, tomK=dayByOffset(ad.off+1).region;
+  const lbl=(k)=> k==='vuelo'?'Nairobi':REGION(k).name;
+  const draw=()=>{ const S=wxStore(), a=S[todK], b=S[tomK];
+    const box=(tag,zone,main)=>`<div class="wxbox"><div class="wl">${tag}</div><div class="wz">${esc(zone)}</div>${main}</div>`;
+    const now=a?`<div class="wt"><span class="we">${wxIcon(a.code)}</span> ${a.t}<small>°C</small></div>`:`<div class="wt"><small>cargando…</small></div>`;
+    let tm=`<div class="wt"><small>cargando…</small></div>`;
+    if(b&&b.daily){ const t=b.daily[1]||b.daily[0]; if(t) tm=`<div class="wt"><span class="we">${wxIcon(t.code)}</span> ${t.max}<small>° / ${t.min}°</small></div>`; }
+    if(!navigator.onLine && !a) { strip.innerHTML=''; return; }
+    strip.innerHTML=`<div class="wx">${box('AHORA', lbl(todK), now)}${box('MAÑANA', lbl(tomK), tm)}</div>`;
+  };
+  draw();
+  if(navigator.onLine){
+    const need=[...new Set([todK,tomK])].filter(k=>{const w=wxStore()[k];return !w||Date.now()-w.ts>3600000;});
+    for(const k of need){ try{ await wxFetch(k); }catch(e){} }
+    if(tab==='viaje'&&!dayId) draw();
+  }
+}
+
+/* ================= SAFARI (bingo + foto) ================= */
+async function renderSafari(){
+  const photos=(await mediaAll()).filter(m=>m.kind==='bingo');
+  const bg=lsGet('kenia.bingo',{});
+  const photoOf=(a)=>photos.find(p=>p.day===a);
+  const done=M.bingo.filter(a=>bg[a]||photoOf(a)).length;
+  screen.innerHTML=`<div class="kicker">SAFARI · ${done}/${M.bingo.length} VISTOS</div>
+    <p class="small muted" style="margin:-2px 0 10px">Toca un animal para marcarlo como visto. Pulsa la 📷 para subirle tu foto.</p>
+    <div class="sgrid">`+M.bingo.map(a=>{
+      const ph=photoOf(a), seen=bg[a]||ph;
+      return `<div class="scell ${seen?'on':''} ${ph?'has':''}" data-a="${esc(a)}">
+        ${ph?`<img src="${objUrl(ph.blob)}"><div class="sov"></div>`:''}
+        <button class="sup" title="Subir foto">📷</button>
+        ${seen?'<div class="scheck">✓</div>':''}
+        <div class="snm">${esc(a)}</div></div>`;
+    }).join('')+`</div>`;
+  document.querySelectorAll('.scell').forEach(c=>{
+    c.querySelector('.sup').onclick=(e)=>{ e.stopPropagation(); pick('bingo', c.dataset.a); };
+    c.onclick=()=>toggleSeen(c.dataset.a);
+  });
+}
+function toggleSeen(a){ const b=lsGet('kenia.bingo',{}); b[a]?delete b[a]:b[a]=1; lsSet('kenia.bingo',b); renderSafari(); }
+
+function infoAcc(emoji, label, hint, groups){
+  if(!groups||!groups.length) return '';
+  const body=groups.map(g=>`<div class="igt">${esc(g.t)}</div><ul>${g.items.map(it=>`<li>${esc(it)}</li>`).join('')}</ul>`).join('');
+  return `<details class="acc"><summary><span class="aemoji">${emoji}</span>
+    <span class="atext"><b>${esc(label)}</b><span class="ahint">${esc(hint)}</span></span>
+    <span class="achev">▾</span></summary><div class="accbody">${body}</div></details>`;
+}
+async function renderDay(){
+  const d=M.days.find(x=>x.id===dayId), r=REGION(d.region);
+  const pcount=(await mediaAll()).filter(m=>m.kind==='photo'&&m.day===d.id).length;
+  const amen=(d.lodgeInfo&&d.lodgeInfo.amenities)||[];
+  const amenHtml=amen.length?`<div class="amen">`+amen.map(k=>{const a=M.amenities[k];
+    return a?`<span class="amchip"><span class="ae">${a.emoji}</span>${esc(a.label)}</span>`:'';}).join('')+`</div>`:'';
+  screen.innerHTML=`
+    <button class="back" onclick="backToViaje()">‹ Itinerario</button>
+    <div class="dcover" style="background:linear-gradient(160deg,${r.bg},#0a141c)">
+      <div class="he" style="font-size:30px">${r.emoji}</div>
+      <div class="lbl" style="color:${r.accent};font-size:11px;font-weight:800;letter-spacing:2px;margin-top:6px">${esc(fmtDate(dateFor(d.offset))).toUpperCase()} · ${esc(r.name).toUpperCase()}</div>
+      <div class="nm serif" style="font-size:27px;font-weight:700;margin-top:4px">${esc(d.title)}</div>
+    </div>
+
+    <div class="dsec"><span class="dse">☀️</span> Día</div>
+    <div class="meta">
+      <div class="mtag"><b>Plan:</b> ${esc(d.place)}</div>
+      ${d.spot?`<div class="mtag"><b>A buscar:</b> ${esc(d.spot)}</div>`:''}
+    </div>
+    <div class="scriptbox">${esc(d.script)}</div>
+    ${infoAcc('📍', d.placeInfo.label, 'curiosidades y cosas que saber', d.placeInfo.groups)}
+
+    <div class="dsec"><span class="dse">🌙</span> Noche</div>
+    ${d.lodgeInfo
+      ? `<div class="nightname">${esc(d.lodgeInfo.label)} <span class="muted small">· ${esc(d.board)}</span></div>
+         ${amenHtml}
+         ${infoAcc('🏨', d.lodgeInfo.label, 'cómo es y consejos', d.lodgeInfo.groups)}`
+      : `<div class="nightname muted">${esc(d.lodging)}</div>`}
+
+    <button class="btn full ghost" style="margin-top:16px" onclick="setTab('fotos')">📸 Fotos de este día (${pcount}/5)</button>`;
+}
+function backToViaje(){ dayId=null; render(); window.scrollTo(0,0); }
+
+/* ================= CONVERSOR (multi-moneda) ================= */
+const CCY={ EUR:'Euro', USD:'Dólar EE. UU.', KES:'Chelín keniano', GBP:'Libra esterlina',
+  CHF:'Franco suizo', CAD:'Dólar canadiense', AUD:'Dólar australiano', JPY:'Yen japonés',
+  MXN:'Peso mexicano', ARS:'Peso argentino', COP:'Peso colombiano', CLP:'Peso chileno',
+  BRL:'Real brasileño', PEN:'Sol peruano', UYU:'Peso uruguayo', SEK:'Corona sueca',
+  NOK:'Corona noruega', DKK:'Corona danesa', PLN:'Zloty polaco', ZAR:'Rand sudafricano',
+  CNY:'Yuan chino', INR:'Rupia india', TRY:'Lira turca', AED:'Dírham EAU', MAD:'Dírham marroquí',
+  TZS:'Chelín tanzano', UGX:'Chelín ugandés' };
+// Cambio base EUR (open.er-api.com, gratis sin key). { rates:{EUR:1,USD,KES,...}, ts }
+function fxData(){ const d=lsGet('kenia.fx', null); return (d&&d.rates)?d:null; }
+async function fetchFx(){
+  try{ const j=await (await fetch('https://open.er-api.com/v6/latest/EUR',{cache:'no-store'})).json();
+    if(j&&j.rates){ j.rates.EUR=1; lsSet('kenia.fx',{rates:j.rates,ts:Date.now()}); return true; }
+  }catch(e){} return false;
+}
+function relTime(ts){ const m=Math.round((Date.now()-ts)/60000);
+  if(m<1)return'justo ahora'; if(m<60)return`hace ${m} min`; const h=Math.round(m/60); if(h<24)return`hace ${h} h`; return`hace ${Math.round(h/24)} días`; }
+const ccyList=()=>lsGet('kenia.curList',['EUR','USD','KES']);
+function fmtMoney(v,c){ const d=(c==='KES'||c==='JPY'||c==='UGX'||c==='TZS'||c==='CLP'||c==='COP'||Math.abs(v)>=500)?0:2;
+  return v.toLocaleString('es-ES',{minimumFractionDigits:0,maximumFractionDigits:d}); }
+
+function renderConv(){
+  const fx=fxData(), list=ccyList();
+  const rows=list.map(c=>`<div class="field" data-row="${c}">
+      <span class="cur">${c}</span>
+      <input inputmode="decimal" data-c="${c}" placeholder="0" />
+      ${list.length>2?`<button class="rm" data-rm="${c}" title="Quitar">×</button>`:''}
+    </div>`).join('');
+  const opts=Object.keys(CCY).filter(c=>!list.includes(c)).map(c=>`<option value="${c}">${c} · ${esc(CCY[c])}</option>`).join('');
+  screen.innerHTML=`<div class="kicker">CONVERSOR DE MONEDA</div>
+    <div class="conv" id="convbox">
+      ${rows}
+      <div class="addccy"><select id="addsel"><option value="">+ Añadir otra moneda…</option>${opts}</select></div>
+      <div class="rate" id="rateline"></div>
+      <button class="btn ghost full sm" id="upd">↻ Actualizar cambio</button>
+    </div>
+    <p class="small muted" style="margin-top:14px">Escribe en cualquier moneda y se convierten las demás. Funciona sin conexión con el último cambio guardado; con internet pulsa <b>Actualizar</b>. Orientativo: en destino aplican comisiones.</p>`;
+
+  const inputs=[...document.querySelectorAll('#convbox input[data-c]')];
+  const recompute=(src)=>{ const fx=fxData(); if(!fx) return;
+    const raw=(src.value||'').replace(/\./g,'').replace(',','.'); const v=parseFloat(raw);
+    if(isNaN(v)){ inputs.forEach(i=>{ if(i!==src)i.value=''; }); return; }
+    const eur=v/(fx.rates[src.dataset.c]||1);
+    inputs.forEach(i=>{ if(i===src)return; const r=fx.rates[i.dataset.c]; i.value=(r==null)?'':fmtMoney(eur*r,i.dataset.c); });
+  };
+  inputs.forEach(i=>i.oninput=()=>recompute(i));
+  function info(){ const fx=fxData();
+    $('rateline').innerHTML = fx ? `1 € ≈ ${fmtMoney(fx.rates.KES,'KES')} KES · ${fmtMoney(fx.rates.USD,'USD')} USD · actualizado ${relTime(fx.ts)}`
+      : `<span style="color:var(--accent)">Sin cambio guardado: pulsa ↻ con internet.</span>`;
+  }
+  info();
+  $('addsel').onchange=(e)=>{ const c=e.target.value; if(!c)return; const l=ccyList(); if(!l.includes(c)){l.push(c);lsSet('kenia.curList',l);} renderConv(); };
+  document.querySelectorAll('[data-rm]').forEach(b=>b.onclick=()=>{ const l=ccyList().filter(x=>x!==b.dataset.rm); lsSet('kenia.curList',l); renderConv(); });
+  $('upd').onclick=async()=>{ $('upd').textContent='Actualizando…'; const ok=await fetchFx();
+    $('upd').textContent=ok?'✓ Actualizado':'Sin conexión'; info();
+    const f=inputs.find(i=>i.value); if(f) recompute(f); setTimeout(()=>$('upd').textContent='↻ Actualizar cambio',1800); };
+  if(!fx && navigator.onLine) $('upd').click();
+}
+
+/* ================= RECUERDOS (fotos) ================= */
+async function renderFotos(ad){
+  const all=await mediaAll(); const photos=all.filter(m=>m.kind==='photo');
+  const total=photos.length;
+  let html=`<div class="kicker">RECUERDOS · ${total} FOTOS</div>`;
+  if(ad.phase==='during'){
+    const c=photos.filter(p=>p.day===ad.day.id).length;
+    if(c<5) html+=`<div class="banner"><span class="bemoji">📸</span><div><b>Fotos de hoy: ${c}/5</b><span class="small">Sube al menos 5 del día de hoy.</span></div>
+      <button onclick="pick('photo','${ad.day.id}')">Añadir</button></div>`;
+  }
+  html+=`<button class="btn full" id="montage">🎬 Montar vídeo del viaje (${total} fotos)</button>
+    <div id="montageOut"></div>
+    <p class="small muted" style="margin:8px 0 4px">El vídeo se crea en tu propio móvil. Si tu móvil no lo soporta, usa "Descargar todas" y lo montas en el ordenador.</p>`;
+
+  html+=M.days.map(d=>{
+    const r=REGION(d.region), ps=photos.filter(p=>p.day===d.id);
+    const ok=ps.length>=5;
+    let th=ps.slice(0,10).map(p=>`<div class="thumbwrap"><img src="${objUrl(p.blob)}">
+        <button class="del" onclick="delMedia(${p.key})">×</button>
+        <button class="share-btn" onclick="sharePhotoKey(${p.key})" title="Compartir">↗</button></div>`).join('');
+    return `<div class="daycard">
+      <div class="hd"><span class="ic">${r.emoji}</span>
+        <div><div class="t">${esc(d.title)}</div><div class="s">${esc(fmtDate(dateFor(d.offset)))} · ${esc(r.name)}</div></div>
+        <span class="prog ${ok?'ok':'no'}">${ps.length}/5${ok?' ✓':''}</span></div>
+      <div class="thumbs">${th}</div>
+      <div class="cardbtns">
+        <button class="btn ghost sm" onclick="pick('photo','${d.id}')">+ Añadir fotos</button>
+        ${ps.length?`<button class="btn ghost sm" onclick="shareDayPhotos('${d.id}')">📤 Compartir (${ps.length})</button>`:''}
+      </div>
+    </div>`;
+  }).join('');
+  html+=`<button class="btn ghost full" onclick="downloadAll('photo')">⬇️ Descargar todas las fotos</button>`;
+  screen.innerHTML=html;
+  $('montage').onclick=buildMontage;
+}
+
+/* ================= VIDEOBLOG ================= */
+const VPROMPTS=['¿Qué es lo que más te ha gustado hoy?','¿Qué animal te ha impresionado más?','¿Qué has aprendido hoy?',
+  '¿Cuál ha sido el mejor momento del día?','¿Qué le contarías a tus amigos de hoy?','¿Qué te ha sorprendido más?','¿Qué repetirías mañana?'];
+async function renderVlog(ad){
+  const vids=(await mediaAll()).filter(m=>m.kind==='video');
+  let html=`<div class="kicker">VIDEOBLOG · ${vids.length} VÍDEOS</div>`;
+  const hour=new Date().getHours();
+  if(ad.phase==='during'){
+    const today=ad.day.id, has=vids.some(v=>v.day===today);
+    if(!has){ const prompt=VPROMPTS[ad.off % VPROMPTS.length];
+      html+=`<div class="banner"><span class="bemoji">🎥</span><div><b>Vídeo de hoy</b><span class="small">${esc(prompt)}</span></div>
+        <button onclick="pick('video','${today}')">Grabar</button></div>`;
+    }
+  }
+  html+=`<p class="small muted">Recordatorio cada tarde (18–20 h) para grabar un vídeo corto: qué te ha gustado, qué animal te impresionó, qué has aprendido… Activa los avisos:</p>
+    <button class="btn ghost full sm" id="notifBtn">🔔 Activar recordatorios</button>`;
+
+  html+=M.days.filter(d=>true).map(d=>{
+    const r=REGION(d.region), vs=vids.filter(v=>v.day===d.id);
+    const list=vs.map(v=>`<div class="vidrow"><video controls preload="metadata" src="${objUrl(v.blob)}"></video>
+      <div class="vmeta"><button class="btn ghost sm" onclick="shareVideoKey(${v.key})">📤 Reel</button><button class="btn ghost sm" onclick="dlBlob(${v.key})">⬇️</button><button class="btn ghost sm" onclick="delMedia(${v.key})">🗑️</button></div></div>`).join('');
+    return `<div class="daycard">
+      <div class="hd"><span class="ic">${r.emoji}</span>
+        <div><div class="t">${esc(d.title)}</div><div class="s">${esc(fmtDate(dateFor(d.offset)))}</div></div>
+        <span class="prog ${vs.length?'ok':'no'}">${vs.length?vs.length+' 🎥':'—'}</span></div>
+      ${list}
+      <button class="btn ghost sm addbtn" onclick="pick('video','${d.id}')">+ Grabar / subir vídeo</button>
+    </div>`;
+  }).join('');
+  screen.innerHTML=html;
+  $('notifBtn').onclick=async()=>{ if(!('Notification' in window)){$('notifBtn').textContent='No disponible en este móvil';return;}
+    const p=await Notification.requestPermission(); $('notifBtn').textContent=p==='granted'?'✓ Recordatorios activados':'Permiso denegado'; };
+}
+
+/* ================= SUAJILI ================= */
+function renderSuajili(){
+  screen.innerHTML=`<div class="kicker">FRASES EN SUAJILI</div>
+    <p class="small muted" style="margin:-2px 0 12px">Pulsa 🔊 para escuchar, o toca la frase para copiarla. La <b style="color:var(--accent)">j</b> suena como la <b>y</b> española.</p>
+    <input id="swq" placeholder="Buscar…" style="width:100%;padding:11px 14px;border-radius:12px;border:1px solid var(--border);background:var(--card);color:var(--text);font-size:15px;outline:none" />
+    <div id="swlist"></div>`;
+  const draw=(q='')=>{ q=q.toLowerCase().trim();
+    const html=M.swahili.map(g=>{
+      const items=g.items.filter(it=>!q||it.es.toLowerCase().includes(q)||it.sw.toLowerCase().includes(q));
+      if(!items.length) return '';
+      return `<div class="section" style="font-size:15px;margin:18px 0 8px">${esc(g.group)}</div>`+
+        items.map(it=>`<div class="row" data-sw="${esc(it.sw)}">
+          <button class="swplay" title="Escuchar">🔊</button>
+          <div class="body" style="margin-left:0">
+            <div class="d2" style="color:var(--accent)">${esc(it.sw)}</div>
+            <div class="d3">${esc(it.es)}</div>
+          </div>
+          <div style="text-align:right"><div class="small muted">${esc(it.pron)}</div><div class="small cp" style="color:var(--muted)">copiar ⧉</div></div>
+        </div>`).join('');
+    }).join('');
+    $('swlist').innerHTML = html || '<p class="center">Sin resultados.</p>';
+    $('swlist').querySelectorAll('.row').forEach(r=>{
+      r.querySelector('.swplay').onclick=(e)=>{ e.stopPropagation(); speak(r.dataset.sw, r.querySelector('.swplay')); };
+      r.onclick=()=>copySw(r);
+    });
+  };
+  draw();
+  $('swq').oninput=e=>draw(e.target.value);
+}
+function copySw(row){
+  const t=row.dataset.sw; if(navigator.clipboard) navigator.clipboard.writeText(t).catch(()=>{});
+  const o=row.querySelector('.cp'); if(o){const p=o.textContent;o.textContent='copiado ✓';o.style.color='var(--green)';
+    setTimeout(()=>{o.textContent=p;o.style.color='var(--muted)';},1200);}
+}
+function speak(text, btn){
+  if(!('speechSynthesis' in window)) return;
+  speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(text); u.rate=0.82;
+  const vs=speechSynthesis.getVoices()||[];
+  const sw=vs.find(v=>/^sw/i.test(v.lang));
+  if(sw){ u.voice=sw; u.lang=sw.lang; } else { u.lang='es-ES'; } // sin voz suajili, la española lee fonético decente
+  if(btn){ btn.classList.add('on'); u.onend=u.onerror=()=>btn.classList.remove('on'); }
+  speechSynthesis.speak(u);
+}
+
+/* ---------- subir fotos/vídeos ---------- */
+function pick(kind, day){
+  const inp=document.createElement('input'); inp.type='file';
+  inp.accept = kind==='video'?'video/*':'image/*';
+  if(kind==='photo') inp.multiple=true; else inp.capture='environment';
+  inp.onchange=async()=>{ for(const f of inp.files){ await mediaAdd({kind,day,blob:f,ts:Date.now()}); }
+    if(kind==='bingo'){ const b=lsGet('kenia.bingo',{}); b[day]=1; lsSet('kenia.bingo',b); }
+    render(); };
+  inp.click();
+}
+async function delMedia(key){ await mediaDel(key); render(); }
+async function dlBlob(key){ const m=(await mediaAll()).find(x=>x.key===key); if(!m)return;
+  const a=document.createElement('a'); a.href=objUrl(m.blob); a.download=`kenia-${m.day}-${key}.${m.kind==='photo'?'jpg':'webm'}`; a.click(); }
+async function downloadAll(kind){ const items=(await mediaAll()).filter(m=>m.kind===kind);
+  for(let i=0;i<items.length;i++){ const m=items[i]; const a=document.createElement('a'); a.href=objUrl(m.blob);
+    a.download=`kenia-${m.day}-${String(i+1).padStart(2,'0')}.jpg`; a.click(); await new Promise(r=>setTimeout(r,300)); } }
+
+/* ---------- compartir en Instagram ---------- */
+const IG_TAGS={amboseli:'#Amboseli',naivasha:'#LagoNaivasha #HellsGate',iltalala:'#Maasai #Iltalala',
+  masaimara:'#MasaiMara',nakuru:'#LagoNakuru',kabarnet:'#Kabarnet #BambaProject',nairobi:'#Nairobi',vuelo:''};
+let _shItems=[], _shVideo=false, _shKind='post';
+const IG_MENTION='@kasinde_africa';
+function captionFor(items, kind){
+  const regs=[...new Set(items.map(p=>{const d=M.days.find(x=>x.id===p.day);return d?d.region:null;}).filter(Boolean))];
+  const placeTags=regs.map(r=>IG_TAGS[r]||'').filter(Boolean).join(' ');
+  const baseTags=`#Kasinde #KasindeAfrica #Kenia #África #Safari #ViajeEnFamilia ${placeTags}`.replace(/\s+/g,' ').trim();
+  if(kind==='story') return `Kenia 🇰🇪 con ${IG_MENTION}\n${placeTags||'#Kenia #Kasinde'}`;
+  if(kind==='reel')  return `Nuestro viaje a Kenia 🦁🎥\nGracias ${IG_MENTION} por esta aventura en familia\n${baseTags}`;
+  return `Viviendo Kenia en familia con ${IG_MENTION} 🦁🌍\n\n${baseTags}`;
+}
+function openShare(items, isVideo){
+  if(!items||!items.length) return;
+  _shItems=items; _shVideo=!!isVideo;
+  const tipos = isVideo ? [['reel','Reel'],['story','Historia']] : [['post','Publicación / carrusel'],['story','Historia']];
+  $('shtipos').innerHTML=tipos.map((t,i)=>`<button class="chip ${i?'':'on'}" data-k="${t[0]}">${esc(t[1])}</button>`).join('');
+  $('shtipos').querySelectorAll('.chip').forEach(c=>c.onclick=()=>{ $('shtipos').querySelectorAll('.chip').forEach(x=>x.classList.remove('on')); c.classList.add('on'); _shKind=c.dataset.k; $('shareText').value=captionFor(_shItems,_shKind); });
+  _shKind=tipos[0][0]; $('shareText').value=captionFor(_shItems,_shKind);
+  $('shareHint').textContent = items.length>1 ? `${items.length} fotos · en Instagram elige "Publicación" para el carrusel.` : 'Al compartir, elige Historia, Publicación o Reel en Instagram.';
+  $('shareDlg').showModal();
+}
+async function sharePhotoKey(key){ const m=(await mediaAll()).find(x=>x.key===key); if(m) openShare([m], false); }
+async function shareDayPhotos(dayId){ const ps=(await mediaAll()).filter(m=>m.kind==='photo'&&m.day===dayId); openShare(ps, false); }
+async function shareVideoKey(key){ const m=(await mediaAll()).find(x=>x.key===key); if(m) openShare([m], true); }
+$('shareClose').onclick=()=>$('shareDlg').close();
+$('shareCopy').onclick=async()=>{ try{ await navigator.clipboard.writeText($('shareText').value); $('shareCopy').textContent='✓ Copiado'; setTimeout(()=>$('shareCopy').textContent='📋 Copiar texto',1500);}catch(e){} };
+$('shareGo').onclick=async()=>{
+  const text=$('shareText').value;
+  try{ await navigator.clipboard.writeText(text); }catch(e){}
+  const files=_shItems.map(m=>new File([m.blob], `casmar-kenia-${m.day}.${_shVideo?'mp4':'jpg'}`, {type:m.blob.type||(_shVideo?'video/mp4':'image/jpeg')}));
+  if(navigator.canShare && navigator.canShare({files})){
+    try{ await navigator.share({files, text, title:'Kenia con Kasinde'}); $('shareDlg').close(); return; }
+    catch(e){ if(e.name==='AbortError') return; }
+  }
+  for(const m of _shItems){ const a=document.createElement('a'); a.href=objUrl(m.blob); a.download=`casmar-kenia-${m.day}.${_shVideo?'webm':'jpg'}`; a.click(); await new Promise(r=>setTimeout(r,250)); }
+  alert('Texto copiado y archivo(s) descargado(s). Súbelos a Instagram y pega el texto.');
+  $('shareDlg').close();
+};
+
+/* ---------- montaje de vídeo (canvas + MediaRecorder) ---------- */
+async function buildMontage(){
+  const out=$('montageOut'); const btn=$('montage');
+  const photos=(await mediaAll()).filter(m=>m.kind==='photo')
+    .sort((a,b)=>{const da=M.days.findIndex(d=>d.id===a.day),db=M.days.findIndex(d=>d.id===b.day);return da-db||a.ts-b.ts;});
+  if(!photos.length){ out.innerHTML='<p class="small muted">Aún no hay fotos. Añade algunas primero.</p>'; return; }
+  if(typeof MediaRecorder==='undefined' || !HTMLCanvasElement.prototype.captureStream){
+    out.innerHTML='<p class="small muted">Tu móvil no permite crear el vídeo aquí. Usa "Descargar todas las fotos" y móntalo en el ordenador.</p>'; return; }
+
+  const W=720,H=1280, cv=document.createElement('canvas'); cv.width=W;cv.height=H; const ctx=cv.getContext('2d');
+  let mime=['video/webm;codecs=vp9','video/webm;codecs=vp8','video/webm','video/mp4'].find(m=>MediaRecorder.isTypeSupported(m))||'';
+  const stream=cv.captureStream(30); const rec=new MediaRecorder(stream, mime?{mimeType:mime}:undefined);
+  const chunks=[]; rec.ondataavailable=e=>{if(e.data.size)chunks.push(e.data);};
+  const done=new Promise(r=>rec.onstop=r);
+  rec.start();
+
+  const labelFor=(p)=>{const d=M.days.find(x=>x.id===p.day);return d?fmtDate(dateFor(d.offset))+' · '+d.title:'';};
+  const SHOT=2600, FADE=420;
+  for(let i=0;i<photos.length;i++){
+    btn.textContent=`🎬 Grabando ${i+1}/${photos.length}…`;
+    let bm; try{ bm=await createImageBitmap(photos[i].blob); }catch(e){ continue; }
+    await drawShot(ctx,W,H,bm,labelFor(photos[i]),SHOT,FADE);
+    bm.close&&bm.close();
+  }
+  rec.stop(); await done;
+  const blob=new Blob(chunks,{type:mime||'video/webm'}); const url=objUrl(blob);
+  out.innerHTML=`<video controls src="${url}" style="width:100%;border-radius:12px;margin-top:10px;background:#000"></video>`;
+  const a=document.createElement('a'); a.href=url; a.download='kenia-viaje.webm'; a.textContent='⬇️ Descargar vídeo';
+  a.className='btn ghost full'; a.style.marginTop='10px'; a.style.display='block'; a.style.textAlign='center'; a.style.textDecoration='none'; out.appendChild(a);
+  btn.textContent=`🎬 Montar vídeo del viaje (${photos.length} fotos)`;
+}
+function drawShot(ctx,W,H,bm,label,dur,fade){
+  return new Promise(res=>{
+    const t0=performance.now();
+    (function frame(now){
+      const e=now-t0, p=Math.min(1,e/dur);
+      const z=1.04+0.06*p; // zoom lento
+      const s=Math.max(W/bm.width,H/bm.height)*z;
+      const dw=bm.width*s, dh=bm.height*s;
+      ctx.fillStyle='#000'; ctx.fillRect(0,0,W,H);
+      ctx.drawImage(bm,(W-dw)/2,(H-dh)/2,dw,dh);
+      // viñeta inferior + texto
+      const g=ctx.createLinearGradient(0,H-220,0,H); g.addColorStop(0,'rgba(0,0,0,0)'); g.addColorStop(1,'rgba(0,0,0,.75)');
+      ctx.fillStyle=g; ctx.fillRect(0,H-220,W,220);
+      ctx.fillStyle='#F4EEE0'; ctx.font='bold 34px Georgia, serif'; ctx.textAlign='center';
+      ctx.fillText(label.slice(0,34),W/2,H-70);
+      // fundido entrada/salida
+      let a=0; if(e<fade)a=1-e/fade; else if(dur-e<fade)a=1-(dur-e)/fade;
+      if(a>0){ ctx.fillStyle=`rgba(0,0,0,${a})`; ctx.fillRect(0,0,W,H); }
+      if(p>=1) res(); else requestAnimationFrame(frame);
+    })(t0);
+  });
+}
+
+/* ---------- recordatorio tarde ---------- */
+function checkReminder(){
+  if(!M) return; const ad=activeDay(); if(ad.phase!=='during') return;
+  const h=new Date().getHours(); if(h<18||h>=20) return;
+  const key=new Date().toISOString().slice(0,10); const done=lsGet('kenia.reminderDone',{});
+  if(done[key]) return; done[key]=1; lsSet('kenia.reminderDone',done);
+  const prompt=VPROMPTS[ad.off % VPROMPTS.length];
+  if('Notification' in window && Notification.permission==='granted'){
+    try{ new Notification('🎥 Vídeo del día', {body:prompt, icon:'icons/icon-192.png'}); }catch(e){}
+  }
+  if(tab==='viaje'&&!dayId || tab==='vlog'){ /* el banner ya aparece al renderizar vlog */ }
+  // aviso visual suave
+  const b=document.createElement('div'); b.className='banner'; b.style.position='fixed'; b.style.left='12px'; b.style.right='12px';
+  b.style.bottom='calc(var(--nav) + 12px)'; b.style.zIndex='40';
+  b.innerHTML=`<span class="bemoji">🎥</span><div><b>Hora de grabar</b><span class="small">${esc(prompt)}</span></div><button>Ir</button>`;
+  b.querySelector('button').onclick=()=>{b.remove();setTab('vlog');};
+  document.body.appendChild(b); setTimeout(()=>b.remove(),12000);
+}
+
+/* ---------- ajustes ---------- */
+$('cfgBtn').onclick=()=>{ $('cfgDate').value=localStorage.getItem('kenia.start')||M.departureDefault; $('cfgDlg').showModal(); };
+$('cfgCancel').onclick=()=>$('cfgDlg').close();
+$('cfgSave').onclick=()=>{ if($('cfgDate').value){localStorage.setItem('kenia.start',$('cfgDate').value);} $('cfgDlg').close(); render(); };
+
+$('brandBtn').onclick=goHome;
+// Con conexión, recargar datos (cambio + tiempo). Sin conexión, todo sigue desde caché.
+window.addEventListener('online',()=>{
+  fetchFx().then(()=>{ if(tab==='conv') renderConv(); });
+  if(tab==='home') renderHome(activeDay());
+  else if(tab==='viaje' && !dayId) renderWeather(activeDay());
+});
+init();
+</script>
+</body>
+</html>

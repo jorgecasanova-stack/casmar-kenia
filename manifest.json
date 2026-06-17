@@ -1,0 +1,1600 @@
+{
+  "app": "CASMAR KENIA",
+  "departureDefault": "2026-06-28",
+  "regions": {
+    "vuelo": {
+      "name": "Vuelo",
+      "accent": "#9FB1BD",
+      "bg": "#13202a",
+      "emoji": "✈️",
+      "ll": [
+        -1.286,
+        36.817
+      ]
+    },
+    "amboseli": {
+      "name": "Amboseli",
+      "accent": "#E3B450",
+      "bg": "#3a2c12",
+      "emoji": "🐘",
+      "ll": [
+        -2.65,
+        37.26
+      ]
+    },
+    "naivasha": {
+      "name": "Naivasha",
+      "accent": "#5BD08A",
+      "bg": "#0d3b2a",
+      "emoji": "🦛",
+      "ll": [
+        -0.717,
+        36.43
+      ]
+    },
+    "iltalala": {
+      "name": "Iltalala",
+      "accent": "#E07A5F",
+      "bg": "#3a1c14",
+      "emoji": "🛖",
+      "ll": [
+        -1.6,
+        35.6
+      ]
+    },
+    "masaimara": {
+      "name": "Masai Mara",
+      "accent": "#F2A65A",
+      "bg": "#3a2410",
+      "emoji": "🦁",
+      "ll": [
+        -1.41,
+        35.0
+      ]
+    },
+    "nakuru": {
+      "name": "Nakuru",
+      "accent": "#8FB3FF",
+      "bg": "#16243f",
+      "emoji": "🦏",
+      "ll": [
+        -0.3,
+        36.08
+      ]
+    },
+    "kabarnet": {
+      "name": "Kabarnet",
+      "accent": "#C9A0DC",
+      "bg": "#2a1838",
+      "emoji": "🤝",
+      "ll": [
+        0.49,
+        35.74
+      ]
+    },
+    "nairobi": {
+      "name": "Nairobi",
+      "accent": "#9FB1BD",
+      "bg": "#13202a",
+      "emoji": "🏙️",
+      "ll": [
+        -1.286,
+        36.817
+      ]
+    }
+  },
+  "route": [
+    "nairobi",
+    "amboseli",
+    "naivasha",
+    "iltalala",
+    "masaimara",
+    "nakuru",
+    "kabarnet",
+    "nairobi"
+  ],
+  "border": [
+    [
+      34.0,
+      1.2
+    ],
+    [
+      34.0,
+      4.6
+    ],
+    [
+      35.9,
+      5.0
+    ],
+    [
+      36.9,
+      4.45
+    ],
+    [
+      38.1,
+      3.6
+    ],
+    [
+      41.0,
+      4.0
+    ],
+    [
+      41.9,
+      3.95
+    ],
+    [
+      40.9,
+      -0.4
+    ],
+    [
+      41.55,
+      -1.7
+    ],
+    [
+      40.1,
+      -3.2
+    ],
+    [
+      39.2,
+      -4.7
+    ],
+    [
+      37.6,
+      -3.05
+    ],
+    [
+      34.0,
+      -1.05
+    ],
+    [
+      34.1,
+      0.4
+    ]
+  ],
+  "amenities": {
+    "pool": {
+      "emoji": "🏊",
+      "label": "Piscina"
+    },
+    "wifi": {
+      "emoji": "📶",
+      "label": "Wifi"
+    },
+    "tent": {
+      "emoji": "⛺",
+      "label": "Tienda de campaña"
+    },
+    "washer": {
+      "emoji": "🧺",
+      "label": "Lavandería"
+    },
+    "hotwater": {
+      "emoji": "🚿",
+      "label": "Agua caliente"
+    },
+    "fullboard": {
+      "emoji": "🍽️",
+      "label": "Pensión completa"
+    },
+    "breakfast": {
+      "emoji": "🥐",
+      "label": "Desayuno"
+    },
+    "restaurant": {
+      "emoji": "🍴",
+      "label": "Restaurante"
+    },
+    "campfire": {
+      "emoji": "🔥",
+      "label": "Hoguera"
+    },
+    "eleclimited": {
+      "emoji": "🔋",
+      "label": "Luz limitada"
+    },
+    "views": {
+      "emoji": "🌄",
+      "label": "Vistas"
+    },
+    "kids": {
+      "emoji": "🛝",
+      "label": "Para niños"
+    },
+    "ac": {
+      "emoji": "❄️",
+      "label": "Aire acond."
+    },
+    "kitchen": {
+      "emoji": "🍳",
+      "label": "Cocina"
+    },
+    "stars": {
+      "emoji": "🌌",
+      "label": "Cielo estrellado"
+    },
+    "wildlife": {
+      "emoji": "🦓",
+      "label": "Fauna cerca"
+    },
+    "community": {
+      "emoji": "🤝",
+      "label": "Comunidad"
+    },
+    "sharedbath": {
+      "emoji": "🚻",
+      "label": "Baño compartido"
+    },
+    "basic": {
+      "emoji": "🎒",
+      "label": "Básico"
+    },
+    "city": {
+      "emoji": "🏙️",
+      "label": "Ciudad"
+    }
+  },
+  "bingo": [
+    "León",
+    "Leopardo",
+    "Guepardo",
+    "Elefante",
+    "Búfalo",
+    "Rinoceronte",
+    "Jirafa",
+    "Cebra",
+    "Hipopótamo",
+    "Ñu",
+    "Flamenco",
+    "Hiena",
+    "Cocodrilo",
+    "Avestruz",
+    "Gacela",
+    "Mono",
+    "Facóquero",
+    "Águila"
+  ],
+  "swahili": [
+    {
+      "group": "Saludos",
+      "items": [
+        {
+          "es": "Hola",
+          "sw": "Jambo",
+          "pron": "YAM-bo"
+        },
+        {
+          "es": "Hola (¿qué tal?)",
+          "sw": "Habari",
+          "pron": "ha-BA-ri"
+        },
+        {
+          "es": "Bienvenido/a",
+          "sw": "Karibu",
+          "pron": "ka-RI-bu"
+        },
+        {
+          "es": "Adiós",
+          "sw": "Kwaheri",
+          "pron": "kua-JE-ri"
+        },
+        {
+          "es": "Buenos días",
+          "sw": "Habari ya asubuhi",
+          "pron": "ha-BA-ri ya a-su-BU-ji"
+        },
+        {
+          "es": "Gracias",
+          "sw": "Asante",
+          "pron": "a-SAN-te"
+        },
+        {
+          "es": "Muchas gracias",
+          "sw": "Asante sana",
+          "pron": "a-SAN-te SA-na"
+        },
+        {
+          "es": "De nada / pasa",
+          "sw": "Karibu",
+          "pron": "ka-RI-bu"
+        },
+        {
+          "es": "Por favor",
+          "sw": "Tafadhali",
+          "pron": "ta-fa-DA-li"
+        },
+        {
+          "es": "Perdón / disculpa",
+          "sw": "Samahani",
+          "pron": "sa-ma-JA-ni"
+        }
+      ]
+    },
+    {
+      "group": "Lo esencial",
+      "items": [
+        {
+          "es": "Sí",
+          "sw": "Ndiyo",
+          "pron": "n-DI-yo"
+        },
+        {
+          "es": "No",
+          "sw": "Hapana",
+          "pron": "ha-PA-na"
+        },
+        {
+          "es": "¿Cómo estás?",
+          "sw": "Hujambo?",
+          "pron": "ju-YAM-bo"
+        },
+        {
+          "es": "Bien",
+          "sw": "Nzuri",
+          "pron": "n-SU-ri"
+        },
+        {
+          "es": "Me llamo…",
+          "sw": "Jina langu ni…",
+          "pron": "YI-na LAN-gu ni"
+        },
+        {
+          "es": "¿Cómo te llamas?",
+          "sw": "Jina lako nani?",
+          "pron": "YI-na LA-ko NA-ni"
+        },
+        {
+          "es": "No entiendo",
+          "sw": "Sielewi",
+          "pron": "si-e-LE-ui"
+        },
+        {
+          "es": "¿Hablas inglés?",
+          "sw": "Unazungumza Kiingereza?",
+          "pron": "u-na-sun-GUM-sa ki-in-ge-RE-sa"
+        },
+        {
+          "es": "¿Cuánto cuesta?",
+          "sw": "Ni bei gani?",
+          "pron": "ni BEY GA-ni"
+        },
+        {
+          "es": "Agua",
+          "sw": "Maji",
+          "pron": "MA-yi"
+        },
+        {
+          "es": "Comida",
+          "sw": "Chakula",
+          "pron": "cha-KU-la"
+        },
+        {
+          "es": "Baño / aseo",
+          "sw": "Choo",
+          "pron": "CHO-o"
+        },
+        {
+          "es": "¿Dónde está…?",
+          "sw": "…iko wapi?",
+          "pron": "...I-ko UA-pi"
+        },
+        {
+          "es": "Ayuda",
+          "sw": "Msaada",
+          "pron": "m-sa-A-da"
+        }
+      ]
+    },
+    {
+      "group": "Números",
+      "items": [
+        {
+          "es": "1",
+          "sw": "Moja",
+          "pron": "MO-ya"
+        },
+        {
+          "es": "2",
+          "sw": "Mbili",
+          "pron": "m-BI-li"
+        },
+        {
+          "es": "3",
+          "sw": "Tatu",
+          "pron": "TA-tu"
+        },
+        {
+          "es": "4",
+          "sw": "Nne",
+          "pron": "N-ne"
+        },
+        {
+          "es": "5",
+          "sw": "Tano",
+          "pron": "TA-no"
+        },
+        {
+          "es": "6",
+          "sw": "Sita",
+          "pron": "SI-ta"
+        },
+        {
+          "es": "7",
+          "sw": "Saba",
+          "pron": "SA-ba"
+        },
+        {
+          "es": "8",
+          "sw": "Nane",
+          "pron": "NA-ne"
+        },
+        {
+          "es": "9",
+          "sw": "Tisa",
+          "pron": "TI-sa"
+        },
+        {
+          "es": "10",
+          "sw": "Kumi",
+          "pron": "KU-mi"
+        }
+      ]
+    },
+    {
+      "group": "Safari y animales",
+      "items": [
+        {
+          "es": "Sin problema / tranqui",
+          "sw": "Hakuna matata",
+          "pron": "ha-KU-na ma-TA-ta"
+        },
+        {
+          "es": "Despacio, con calma",
+          "sw": "Pole pole",
+          "pron": "PO-le PO-le"
+        },
+        {
+          "es": "¡Vamos!",
+          "sw": "Twende",
+          "pron": "TUEN-de"
+        },
+        {
+          "es": "Genial / guay",
+          "sw": "Poa",
+          "pron": "PO-a"
+        },
+        {
+          "es": "Amigo",
+          "sw": "Rafiki",
+          "pron": "ra-FI-ki"
+        },
+        {
+          "es": "Animal",
+          "sw": "Mnyama",
+          "pron": "m-NIA-ma"
+        },
+        {
+          "es": "León",
+          "sw": "Simba",
+          "pron": "SIM-ba"
+        },
+        {
+          "es": "Elefante",
+          "sw": "Tembo",
+          "pron": "TEM-bo"
+        },
+        {
+          "es": "Jirafa",
+          "sw": "Twiga",
+          "pron": "TUI-ga"
+        },
+        {
+          "es": "Cebra",
+          "sw": "Punda milia",
+          "pron": "PUN-da mi-LI-a"
+        },
+        {
+          "es": "Hipopótamo",
+          "sw": "Kiboko",
+          "pron": "ki-BO-ko"
+        },
+        {
+          "es": "Búfalo",
+          "sw": "Nyati",
+          "pron": "NIA-ti"
+        },
+        {
+          "es": "Rinoceronte",
+          "sw": "Kifaru",
+          "pron": "ki-FA-ru"
+        },
+        {
+          "es": "Leopardo",
+          "sw": "Chui",
+          "pron": "CHU-i"
+        },
+        {
+          "es": "Mono",
+          "sw": "Tumbili",
+          "pron": "tum-BI-li"
+        }
+      ]
+    },
+    {
+      "group": "Para los peques",
+      "items": [
+        {
+          "es": "Niño/a",
+          "sw": "Mtoto",
+          "pron": "m-TO-to"
+        },
+        {
+          "es": "Mamá",
+          "sw": "Mama",
+          "pron": "MA-ma"
+        },
+        {
+          "es": "Papá",
+          "sw": "Baba",
+          "pron": "BA-ba"
+        },
+        {
+          "es": "Jugar",
+          "sw": "Kucheza",
+          "pron": "ku-CHE-sa"
+        },
+        {
+          "es": "Feliz / contento",
+          "sw": "Furaha",
+          "pron": "fu-RA-ja"
+        }
+      ]
+    }
+  ],
+  "days": [
+    {
+      "id": "d01",
+      "offset": 0,
+      "region": "vuelo",
+      "place": "Vuelo internacional",
+      "lodging": "A bordo",
+      "board": "—",
+      "title": "¡Empieza la aventura!",
+      "spot": "",
+      "script": "¡Ya estamos en marcha, familia! Hoy todavía no veréis leones, pero empieza lo más emocionante de todo: el viaje. El vuelo sale a las cuatro y media de la tarde, así que el avión va a ser vuestra primera habitación africana. Aprovechad para dormir todo lo que podáis, porque mañana, al amanecer, aterrizáis en Nairobi y el día va a ser muy largo.\nTruco para los más peques: que lleven su muñeco favorito, algo de picar y unos auriculares para la peli. Y vosotros, papás, respirad hondo: en unas horas estaréis pisando Kenia. Karibu, que en suajili significa bienvenidos.",
+      "placeInfo": {
+        "label": "Antes de volar",
+        "groups": [
+          {
+            "t": "Antes de volar",
+            "items": [
+              "Visado: Kenia exige autorización electrónica (eTA) tramitada online antes del viaje. Pasaportes con 6 meses de validez.",
+              "Salud: consultar centro de vacunación internacional (fiebre amarilla y profilaxis de malaria son lo habitual).",
+              "Diferencia horaria: Kenia va +1 h respecto a la España peninsular en verano.",
+              "Enchufes tipo G (británico, 3 clavijas): lleva adaptador."
+            ]
+          },
+          {
+            "t": "Con niños en el avión",
+            "items": [
+              "En cabina: medicación, una muda por peque, snacks, auriculares y tablet/juego cargado.",
+              "El vuelo es nocturno: pijama o ropa cómoda y su muñeco para que duerman."
+            ]
+          }
+        ]
+      },
+      "lodgeInfo": null
+    },
+    {
+      "id": "d02",
+      "offset": 1,
+      "region": "amboseli",
+      "place": "Llegada a Nairobi · traslado a Amboseli",
+      "lodging": "Amboseli Oilepo",
+      "board": "Pensión completa",
+      "title": "La Tierra de los Gigantes",
+      "spot": "Elefantes",
+      "script": "Aterrizáis en Nairobi de madrugada, así que hoy toca espabilar con el desayuno. Después, un trayecto de unas cuatro horas hacia el sur, hasta Amboseli.\nId mirando por la ventanilla: el paisaje cambia, aparecen las primeras acacias y, si el cielo está despejado, al fondo se levanta el Kilimanjaro, la montaña más alta de África, coronada de nieve aunque estéis casi en el ecuador. Amboseli es la Tierra de los Gigantes por sus enormes manadas de elefantes.\nEsta misma tarde hacéis vuestro primer safari. Niños, mucha atención: hoy podríais ver vuestro primer elefante de verdad. Cámara lista y ojos bien abiertos.",
+      "placeInfo": {
+        "label": "Amboseli",
+        "groups": [
+          {
+            "t": "Curiosidades",
+            "items": [
+              "Aquí están las mejores vistas del Kilimanjaro (5.895 m, el techo de África), aunque la montaña esté ya en Tanzania.",
+              "Sus elefantes son de los más estudiados del mundo (desde 1972) y lucen algunos de los colmillos más grandes de Kenia.",
+              "El nombre viene del maa 'empusel': 'lugar salado y polvoriento'."
+            ]
+          },
+          {
+            "t": "Bueno saber",
+            "items": [
+              "El Kili suele despejarse al amanecer y al atardecer: esos son los momentos para la foto.",
+              "Es muy polvoriento: gafas de sol, buff o pañuelo y cuidado al cambiar lentes de la cámara.",
+              "A ~1.150 m: días calurosos pero mañanas y noches frescas. Vestid por capas."
+            ]
+          }
+        ]
+      },
+      "lodgeInfo": {
+        "label": "Amboseli Oilepo",
+        "groups": [
+          {
+            "t": "Cómo es",
+            "items": [
+              "Alojamiento de sabor local junto al Parque de Amboseli, gestionado con la comunidad masái de la zona; pensión completa.",
+              "Habitaciones/tiendas sencillas y acogedoras, con el Kilimanjaro de fondo en los días despejados.",
+              "Tiene piscina para refrescarse a mediodía y ofrece un paseo al atardecer para conocer a la comunidad vecina."
+            ]
+          },
+          {
+            "t": "Qué esperar",
+            "items": [
+              "Ambiente tranquilo y muy auténtico, más que de hotel grande.",
+              "Electricidad y wifi pueden ser limitados."
+            ]
+          },
+          {
+            "t": "Útil",
+            "items": [
+              "Power bank y repelente.",
+              "Ropa por capas: noches frescas, mediodías calurosos.",
+              "Bañadores a mano."
+            ]
+          }
+        ],
+        "amenities": [
+          "pool",
+          "fullboard",
+          "hotwater",
+          "views",
+          "community",
+          "eleclimited"
+        ]
+      }
+    },
+    {
+      "id": "d03",
+      "offset": 2,
+      "region": "amboseli",
+      "place": "Safari de mañana · comunidad al atardecer",
+      "lodging": "Amboseli Oilepo",
+      "board": "Pensión completa",
+      "title": "Agua del Kilimanjaro",
+      "spot": "Elefantes, búfalos, flamencos",
+      "script": "Hoy madrugáis para el safari de la mañana, que es cuando los animales están más activos y la luz es más bonita. Buscad los elefantes junto a las lagunas: ese agua viene del deshielo del Kilimanjaro, que los masái llaman Ol Doinyo Oibor, la Montaña Blanca Brillante. Alrededor del agua se junta muchísima vida: búfalos, ñus, cebras, flamencos, hipopótamos.\nDe vuelta al alojamiento, relax y piscina, que los peques también necesitan jugar. Y al atardecer, si os animáis, paseo para conocer a la comunidad que os acoge.\nLa luz del atardecer en Amboseli es oro puro para las fotos.",
+      "placeInfo": {
+        "label": "Amboseli",
+        "groups": [
+          {
+            "t": "Curiosidades",
+            "items": [
+              "Aquí están las mejores vistas del Kilimanjaro (5.895 m, el techo de África), aunque la montaña esté ya en Tanzania.",
+              "Sus elefantes son de los más estudiados del mundo (desde 1972) y lucen algunos de los colmillos más grandes de Kenia.",
+              "El nombre viene del maa 'empusel': 'lugar salado y polvoriento'."
+            ]
+          },
+          {
+            "t": "Bueno saber",
+            "items": [
+              "El Kili suele despejarse al amanecer y al atardecer: esos son los momentos para la foto.",
+              "Es muy polvoriento: gafas de sol, buff o pañuelo y cuidado al cambiar lentes de la cámara.",
+              "A ~1.150 m: días calurosos pero mañanas y noches frescas. Vestid por capas."
+            ]
+          }
+        ]
+      },
+      "lodgeInfo": {
+        "label": "Amboseli Oilepo",
+        "groups": [
+          {
+            "t": "Cómo es",
+            "items": [
+              "Alojamiento de sabor local junto al Parque de Amboseli, gestionado con la comunidad masái de la zona; pensión completa.",
+              "Habitaciones/tiendas sencillas y acogedoras, con el Kilimanjaro de fondo en los días despejados.",
+              "Tiene piscina para refrescarse a mediodía y ofrece un paseo al atardecer para conocer a la comunidad vecina."
+            ]
+          },
+          {
+            "t": "Qué esperar",
+            "items": [
+              "Ambiente tranquilo y muy auténtico, más que de hotel grande.",
+              "Electricidad y wifi pueden ser limitados."
+            ]
+          },
+          {
+            "t": "Útil",
+            "items": [
+              "Power bank y repelente.",
+              "Ropa por capas: noches frescas, mediodías calurosos.",
+              "Bañadores a mano."
+            ]
+          }
+        ],
+        "amenities": [
+          "pool",
+          "fullboard",
+          "hotwater",
+          "views",
+          "community",
+          "eleclimited"
+        ]
+      }
+    },
+    {
+      "id": "d04",
+      "offset": 3,
+      "region": "naivasha",
+      "place": "Ruta a Naivasha (6 h) · relax en el lago",
+      "lodging": "Naivasha Simba Lodge",
+      "board": "Pensión completa",
+      "title": "El Valle del Rift",
+      "spot": "Hipopótamos",
+      "script": "Hoy toca carretera: unas seis horas hasta el lago Naivasha, en pleno Valle del Rift. Trayecto largo, así que preparad juegos, música y paciencia para los niños. Almuerzo por el camino.\nNaivasha es el lago más alto del Valle del Rift, un sitio precioso y distinto, porque aquí el safari también se hace en barca. Esta tarde, a descansar a la orilla. Y escuchad bien al atardecer: ese sonido grave y profundo son los hipopótamos.\nMañana, bici y agua. Hoy, cargar pilas.",
+      "placeInfo": {
+        "label": "Naivasha",
+        "groups": [
+          {
+            "t": "Curiosidades",
+            "items": [
+              "Lago de agua dulce del Valle del Rift; su nivel sube y baja muchísimo (en maa 'Nai'posha', 'aguas agitadas').",
+              "Hell's Gate inspiró paisajes de El Rey León y es de los poquísimos parques donde puedes ir en bici y a pie, porque casi no hay grandes depredadores.",
+              "Es un paraíso de aves: se han contado cientos de especies alrededor del lago."
+            ]
+          },
+          {
+            "t": "Bueno saber",
+            "items": [
+              "¡Ojo con los hipopótamos! Son el animal que más muertes causa en África. Nunca te pongas entre uno y el agua, y cuidado al anochecer cerca del lodge.",
+              "Día activo de bici y barca: calzado cómodo, agua, gorra y crema solar."
+            ]
+          }
+        ]
+      },
+      "lodgeInfo": {
+        "label": "Naivasha Simba Lodge",
+        "groups": [
+          {
+            "t": "Cómo es",
+            "items": [
+              "Lodge a pie del lago Naivasha, rodeado de jardines donde es habitual ver aves y, a veces, monos.",
+              "Habitaciones cómodas y zonas comunes amplias; pensión completa."
+            ]
+          },
+          {
+            "t": "Qué esperar",
+            "items": [
+              "Es zona de hipopótamos: por la noche salen del agua a pastar por los jardines. Hazles caso a las indicaciones del personal y no pasees solo al anochecer.",
+              "Buen sitio para descansar tras la carretera y antes del día activo de Hell's Gate."
+            ]
+          },
+          {
+            "t": "Útil",
+            "items": [
+              "Calzado cómodo para bici y barca.",
+              "Ojo con los peques cerca de la orilla."
+            ]
+          }
+        ],
+        "amenities": [
+          "fullboard",
+          "wifi",
+          "hotwater",
+          "restaurant",
+          "wildlife"
+        ]
+      }
+    },
+    {
+      "id": "d05",
+      "offset": 4,
+      "region": "naivasha",
+      "place": "Hell's Gate en bici · safari a pie y en barca",
+      "lodging": "Naivasha Simba Lodge",
+      "board": "Pensión completa",
+      "title": "Pedaleando entre cebras",
+      "spot": "Cebras, jirafas, aves",
+      "script": "¡Día de aventura activa! Por la mañana, bicicleta por el Parque de Hell's Gate, uno de los poquísimos lugares de Kenia donde puedes pedalear entre cebras y jirafas, sin coche de por medio. Aquí se inspiraron los paisajes de El Rey León: la garganta y los acantilados os van a sonar. Niños, esto es meterse dentro de la película.\nPor la tarde, safari a pie y paseo en barca por el lago, buscando familias de hipopótamos y un montón de aves.\nLlevad agua, gorra y crema solar: hoy os movéis mucho. Y respeto al hipopótamo, que parece tranquilo pero no lo es.",
+      "placeInfo": {
+        "label": "Naivasha",
+        "groups": [
+          {
+            "t": "Curiosidades",
+            "items": [
+              "Lago de agua dulce del Valle del Rift; su nivel sube y baja muchísimo (en maa 'Nai'posha', 'aguas agitadas').",
+              "Hell's Gate inspiró paisajes de El Rey León y es de los poquísimos parques donde puedes ir en bici y a pie, porque casi no hay grandes depredadores.",
+              "Es un paraíso de aves: se han contado cientos de especies alrededor del lago."
+            ]
+          },
+          {
+            "t": "Bueno saber",
+            "items": [
+              "¡Ojo con los hipopótamos! Son el animal que más muertes causa en África. Nunca te pongas entre uno y el agua, y cuidado al anochecer cerca del lodge.",
+              "Día activo de bici y barca: calzado cómodo, agua, gorra y crema solar."
+            ]
+          }
+        ]
+      },
+      "lodgeInfo": {
+        "label": "Naivasha Simba Lodge",
+        "groups": [
+          {
+            "t": "Cómo es",
+            "items": [
+              "Lodge a pie del lago Naivasha, rodeado de jardines donde es habitual ver aves y, a veces, monos.",
+              "Habitaciones cómodas y zonas comunes amplias; pensión completa."
+            ]
+          },
+          {
+            "t": "Qué esperar",
+            "items": [
+              "Es zona de hipopótamos: por la noche salen del agua a pastar por los jardines. Hazles caso a las indicaciones del personal y no pasees solo al anochecer.",
+              "Buen sitio para descansar tras la carretera y antes del día activo de Hell's Gate."
+            ]
+          },
+          {
+            "t": "Útil",
+            "items": [
+              "Calzado cómodo para bici y barca.",
+              "Ojo con los peques cerca de la orilla."
+            ]
+          }
+        ],
+        "amenities": [
+          "fullboard",
+          "wifi",
+          "hotwater",
+          "restaurant",
+          "wildlife"
+        ]
+      }
+    },
+    {
+      "id": "d06",
+      "offset": 5,
+      "region": "iltalala",
+      "place": "Ruta a la comunidad maasai (5 h) · acampada",
+      "lodging": "Iltalala (camping)",
+      "board": "Pensión completa",
+      "title": "La Kenia auténtica",
+      "spot": "Cielo estrellado",
+      "script": "Hoy os adentráis en la Kenia más auténtica. Tras unas cinco horas llegáis a la comunidad masái de Iltalala. No es un parque ni un circuito turístico: es un lugar de verdad, donde una asociación trabaja con la comunidad, sobre todo en educación y con especial atención a las niñas.\nPor la tarde os enseñarán cómo viven, su cultura y sus costumbres. Una experiencia que vuestros hijos recordarán toda la vida: otros niños, otra forma de vivir, mucho que aprender de ambos lados.\nY esta noche, acampada bajo uno de los cielos más estrellados que veréis jamás. Cuando anochezca, tumbaos todos y mirad hacia arriba.",
+      "placeInfo": {
+        "label": "Iltalala",
+        "groups": [
+          {
+            "t": "Sobre los maasai",
+            "items": [
+              "Pueblo seminómada y ganadero: el ganado es su riqueza y casi su moneda.",
+              "Sus señas: las telas rojas 'shuka' y el salto 'adumu' de los guerreros. Hablan maa, además de suajili e inglés.",
+              "Es un proyecto solidario real (Mamá Kasinde), no un espectáculo turístico."
+            ]
+          },
+          {
+            "t": "Bueno saber",
+            "items": [
+              "Pide permiso antes de fotografiar a las personas; a veces agradecen una pequeña aportación.",
+              "Noche de acampada: frontal o linterna, ropa de abrigo (refresca de noche) y repelente.",
+              "El cielo estrellado sin contaminación lumínica es de los recuerdos que se quedan: dedicadle un rato."
+            ]
+          }
+        ]
+      },
+      "lodgeInfo": {
+        "label": "Iltalala (camping)",
+        "groups": [
+          {
+            "t": "Cómo es",
+            "items": [
+              "Acampada en la propia comunidad masái: tiendas sencillas montadas para el grupo. Lo importante aquí no es el confort, sino la convivencia y la experiencia.",
+              "Cielo estrellado espectacular al no haber ninguna luz alrededor: de lo mejor del viaje."
+            ]
+          },
+          {
+            "t": "Qué esperar",
+            "items": [
+              "Instalaciones básicas: baños y duchas compartidos y simples.",
+              "Noche fresca y silenciosa, con sonidos del campo."
+            ]
+          },
+          {
+            "t": "Útil",
+            "items": [
+              "Frontal, saco o ropa de abrigo y repelente.",
+              "Lleva tu agua, papel y gel; toallitas para los peques.",
+              "Una bolsa para la ropa de safari polvorienta."
+            ]
+          }
+        ],
+        "amenities": [
+          "tent",
+          "campfire",
+          "stars",
+          "sharedbath",
+          "basic"
+        ]
+      }
+    },
+    {
+      "id": "d07",
+      "offset": 6,
+      "region": "masaimara",
+      "place": "Traslado al Masai Mara · tarde de relax",
+      "lodging": "Masai Mara Kampasi",
+      "board": "Pensión completa",
+      "title": "La joya de la corona",
+      "spot": "",
+      "script": "Traslado hacia la joya de la corona de Kenia: el Masai Mara. Por la tarde, relax en el campamento para coger fuerzas, porque lo que viene es lo más grande del viaje.\nEl Mara es, posiblemente, el mejor sitio del planeta para ver fauna: la mayor concentración de mamíferos de toda la Tierra. Ese África de los documentales, con manadas inmensas y amaneceres de mentira.\nCenad pronto y dormid bien: mañana empieza el gran safari.",
+      "placeInfo": {
+        "label": "Masai Mara",
+        "groups": [
+          {
+            "t": "Curiosidades",
+            "items": [
+              "Es la prolongación keniana del Serengeti: juntos forman el escenario de la Gran Migración, más de un millón de ñus que cruzan el río Mara (sobre todo de julio a octubre).",
+              "Tiene una de las mayores densidades de leones del planeta; los tres felinos se ven casi todo el año.",
+              "'Mara' significa 'moteado' en maa, por los árboles y las sombras de las nubes sobre la llanura."
+            ]
+          },
+          {
+            "t": "Bueno saber",
+            "items": [
+              "Madrugar merece la pena: los felinos cazan al amanecer y la luz es la mejor.",
+              "En el safari de mañana se pasa frío en el 4x4 abierto: llevad forro o manta.",
+              "Unos prismáticos cambian la experiencia. Respeta la distancia y el silencio."
+            ]
+          }
+        ]
+      },
+      "lodgeInfo": {
+        "label": "Masai Mara Kampasi",
+        "groups": [
+          {
+            "t": "Cómo es",
+            "items": [
+              "Campamento de tiendas (tented camp): tiendas grandes de safari montadas sobre plataforma, con cama de verdad, sábanas y baño propio dentro o detrás de la tienda. No es 'camping duro'.",
+              "Suele tener agua caliente (a veces a horas concretas o por bidón calentado), zona común con comedor y, a menudo, una hoguera por la noche.",
+              "Está dentro o pegado a la naturaleza: no hay vallas, así que de noche pueden pasar animales entre las tiendas. Es seguro si sigues las normas."
+            ]
+          },
+          {
+            "t": "Qué esperar",
+            "items": [
+              "Electricidad limitada: a veces solo por generador a ciertas horas o con placas solares. Carga el móvil cuando puedas.",
+              "De noche se oyen ruidos de fauna alrededor: forma parte de la magia (a los peques explicádselo antes para que no se asusten).",
+              "Por seguridad, un ranger te acompaña a la tienda tras la cena; no salgas solo de noche."
+            ]
+          },
+          {
+            "t": "Útil",
+            "items": [
+              "Frontal y power bank.",
+              "Repelente, y una capa de abrigo para las noches frescas.",
+              "Vigila a los peques con cremalleras y zapatos (revisad el calzado por la mañana)."
+            ]
+          }
+        ],
+        "amenities": [
+          "tent",
+          "fullboard",
+          "hotwater",
+          "campfire",
+          "wildlife"
+        ]
+      }
+    },
+    {
+      "id": "d08",
+      "offset": 7,
+      "region": "masaimara",
+      "place": "Safari de mañana y de tarde",
+      "lodging": "Masai Mara Kampasi",
+      "board": "Pensión completa",
+      "title": "Los tres grandes felinos",
+      "spot": "León, leopardo, guepardo",
+      "script": "Hoy es uno de esos días que, ellos solos, justifican todo el viaje. Safari de mañana y de tarde en el Masai Mara. Aquí tenéis las mayores probabilidades del mundo de ver a los tres grandes felinos: león, leopardo y guepardo. Y manadas enormes, y atardeceres de película.\nNiños, hoy empieza el juego de los Cinco Grandes: león, leopardo, elefante, búfalo y rinoceronte. En la app tenéis el bingo del safari para ir tachando.\nCámaras cargadas y mucha paciencia: la mejor escena casi siempre llega cuando ya no la esperabas.",
+      "placeInfo": {
+        "label": "Masai Mara",
+        "groups": [
+          {
+            "t": "Curiosidades",
+            "items": [
+              "Es la prolongación keniana del Serengeti: juntos forman el escenario de la Gran Migración, más de un millón de ñus que cruzan el río Mara (sobre todo de julio a octubre).",
+              "Tiene una de las mayores densidades de leones del planeta; los tres felinos se ven casi todo el año.",
+              "'Mara' significa 'moteado' en maa, por los árboles y las sombras de las nubes sobre la llanura."
+            ]
+          },
+          {
+            "t": "Bueno saber",
+            "items": [
+              "Madrugar merece la pena: los felinos cazan al amanecer y la luz es la mejor.",
+              "En el safari de mañana se pasa frío en el 4x4 abierto: llevad forro o manta.",
+              "Unos prismáticos cambian la experiencia. Respeta la distancia y el silencio."
+            ]
+          }
+        ]
+      },
+      "lodgeInfo": {
+        "label": "Masai Mara Kampasi",
+        "groups": [
+          {
+            "t": "Cómo es",
+            "items": [
+              "Campamento de tiendas (tented camp): tiendas grandes de safari montadas sobre plataforma, con cama de verdad, sábanas y baño propio dentro o detrás de la tienda. No es 'camping duro'.",
+              "Suele tener agua caliente (a veces a horas concretas o por bidón calentado), zona común con comedor y, a menudo, una hoguera por la noche.",
+              "Está dentro o pegado a la naturaleza: no hay vallas, así que de noche pueden pasar animales entre las tiendas. Es seguro si sigues las normas."
+            ]
+          },
+          {
+            "t": "Qué esperar",
+            "items": [
+              "Electricidad limitada: a veces solo por generador a ciertas horas o con placas solares. Carga el móvil cuando puedas.",
+              "De noche se oyen ruidos de fauna alrededor: forma parte de la magia (a los peques explicádselo antes para que no se asusten).",
+              "Por seguridad, un ranger te acompaña a la tienda tras la cena; no salgas solo de noche."
+            ]
+          },
+          {
+            "t": "Útil",
+            "items": [
+              "Frontal y power bank.",
+              "Repelente, y una capa de abrigo para las noches frescas.",
+              "Vigila a los peques con cremalleras y zapatos (revisad el calzado por la mañana)."
+            ]
+          }
+        ],
+        "amenities": [
+          "tent",
+          "fullboard",
+          "hotwater",
+          "campfire",
+          "wildlife"
+        ]
+      }
+    },
+    {
+      "id": "d09",
+      "offset": 8,
+      "region": "masaimara",
+      "place": "Traslado a Enkerende · safari a pie por la tarde",
+      "lodging": "Masai Mara Enkerende",
+      "board": "Pensión completa",
+      "title": "Caminar por la sabana",
+      "spot": "Huellas, aves, gacelas",
+      "script": "Cambiáis de zona dentro del Mara, hacia Enkerende, para verlo desde otro ángulo. Safari por la mañana y, por la tarde, algo muy especial: un safari a pie.\nCaminar por la sabana con un guía masái, sintiendo el suelo y escuchando los sonidos, es totalmente distinto a ir en coche. Os irán explicando huellas, plantas y detalles que desde el vehículo ni se ven. Para los niños, pura magia de exploradores.\nEso sí: atentos a todo lo que diga el guía. Aquí la naturaleza manda.",
+      "placeInfo": {
+        "label": "Masai Mara",
+        "groups": [
+          {
+            "t": "Curiosidades",
+            "items": [
+              "Es la prolongación keniana del Serengeti: juntos forman el escenario de la Gran Migración, más de un millón de ñus que cruzan el río Mara (sobre todo de julio a octubre).",
+              "Tiene una de las mayores densidades de leones del planeta; los tres felinos se ven casi todo el año.",
+              "'Mara' significa 'moteado' en maa, por los árboles y las sombras de las nubes sobre la llanura."
+            ]
+          },
+          {
+            "t": "Bueno saber",
+            "items": [
+              "Madrugar merece la pena: los felinos cazan al amanecer y la luz es la mejor.",
+              "En el safari de mañana se pasa frío en el 4x4 abierto: llevad forro o manta.",
+              "Unos prismáticos cambian la experiencia. Respeta la distancia y el silencio."
+            ]
+          }
+        ]
+      },
+      "lodgeInfo": {
+        "label": "Masai Mara Enkerende",
+        "groups": [
+          {
+            "t": "Cómo es",
+            "items": [
+              "Campamento de tiendas (tented camp): tiendas grandes de safari montadas sobre plataforma, con cama de verdad, sábanas y baño propio dentro o detrás de la tienda. No es 'camping duro'.",
+              "Suele tener agua caliente (a veces a horas concretas o por bidón calentado), zona común con comedor y, a menudo, una hoguera por la noche.",
+              "Está dentro o pegado a la naturaleza: no hay vallas, así que de noche pueden pasar animales entre las tiendas. Es seguro si sigues las normas."
+            ]
+          },
+          {
+            "t": "Qué esperar",
+            "items": [
+              "Electricidad limitada: a veces solo por generador a ciertas horas o con placas solares. Carga el móvil cuando puedas.",
+              "De noche se oyen ruidos de fauna alrededor: forma parte de la magia (a los peques explicádselo antes para que no se asusten).",
+              "Por seguridad, un ranger te acompaña a la tienda tras la cena; no salgas solo de noche."
+            ]
+          },
+          {
+            "t": "Útil",
+            "items": [
+              "Frontal y power bank.",
+              "Repelente, y una capa de abrigo para las noches frescas.",
+              "Vigila a los peques con cremalleras y zapatos (revisad el calzado por la mañana)."
+            ]
+          }
+        ],
+        "amenities": [
+          "tent",
+          "fullboard",
+          "hotwater",
+          "campfire",
+          "wildlife"
+        ]
+      }
+    },
+    {
+      "id": "d10",
+      "offset": 9,
+      "region": "masaimara",
+      "place": "Safari de mañana y de tarde",
+      "lodging": "Masai Mara Enkerende",
+      "board": "Pensión completa",
+      "title": "La sabana nunca se repite",
+      "spot": "Lo que aún os falte",
+      "script": "Otro día completo de safari en el Mara, mañana y tarde. Aprovechadlo: cada salida es diferente, la sabana nunca se repite.\nSi todavía os falta algún felino, hoy es un gran día para intentarlo. Y si ya los habéis visto todos, disfrutad de lo pequeño: pájaros de colores imposibles, crías dando sus primeros pasos, la luz cambiando sobre la hierba.\nConsejo: hoy grabad vídeos cortos además de fotos. El movimiento de una manada no cabe en una sola imagen.",
+      "placeInfo": {
+        "label": "Masai Mara",
+        "groups": [
+          {
+            "t": "Curiosidades",
+            "items": [
+              "Es la prolongación keniana del Serengeti: juntos forman el escenario de la Gran Migración, más de un millón de ñus que cruzan el río Mara (sobre todo de julio a octubre).",
+              "Tiene una de las mayores densidades de leones del planeta; los tres felinos se ven casi todo el año.",
+              "'Mara' significa 'moteado' en maa, por los árboles y las sombras de las nubes sobre la llanura."
+            ]
+          },
+          {
+            "t": "Bueno saber",
+            "items": [
+              "Madrugar merece la pena: los felinos cazan al amanecer y la luz es la mejor.",
+              "En el safari de mañana se pasa frío en el 4x4 abierto: llevad forro o manta.",
+              "Unos prismáticos cambian la experiencia. Respeta la distancia y el silencio."
+            ]
+          }
+        ]
+      },
+      "lodgeInfo": {
+        "label": "Masai Mara Enkerende",
+        "groups": [
+          {
+            "t": "Cómo es",
+            "items": [
+              "Campamento de tiendas (tented camp): tiendas grandes de safari montadas sobre plataforma, con cama de verdad, sábanas y baño propio dentro o detrás de la tienda. No es 'camping duro'.",
+              "Suele tener agua caliente (a veces a horas concretas o por bidón calentado), zona común con comedor y, a menudo, una hoguera por la noche.",
+              "Está dentro o pegado a la naturaleza: no hay vallas, así que de noche pueden pasar animales entre las tiendas. Es seguro si sigues las normas."
+            ]
+          },
+          {
+            "t": "Qué esperar",
+            "items": [
+              "Electricidad limitada: a veces solo por generador a ciertas horas o con placas solares. Carga el móvil cuando puedas.",
+              "De noche se oyen ruidos de fauna alrededor: forma parte de la magia (a los peques explicádselo antes para que no se asusten).",
+              "Por seguridad, un ranger te acompaña a la tienda tras la cena; no salgas solo de noche."
+            ]
+          },
+          {
+            "t": "Útil",
+            "items": [
+              "Frontal y power bank.",
+              "Repelente, y una capa de abrigo para las noches frescas.",
+              "Vigila a los peques con cremalleras y zapatos (revisad el calzado por la mañana)."
+            ]
+          }
+        ],
+        "amenities": [
+          "tent",
+          "fullboard",
+          "hotwater",
+          "campfire",
+          "wildlife"
+        ]
+      }
+    },
+    {
+      "id": "d11",
+      "offset": 10,
+      "region": "nakuru",
+      "place": "Ruta a Nakuru (5 h) · safari o piscina",
+      "lodging": "Lake Nakuru Lodge",
+      "board": "Pensión completa",
+      "title": "El santuario del rinoceronte",
+      "spot": "Rinocerontes, flamencos",
+      "script": "Rumbo al norte, unas cinco horas, hasta el lago Nakuru. Este parque es un santuario de rinocerontes: uno de los mejores lugares del mundo para ver tanto al blanco como al negro, dos especies en grave peligro de extinción.\nPor la tarde podéis elegir: safari, o piscina del hotel con vistas a la reserva. Los peques os lo agradecerán.\nY buscad los flamencos en la orilla: cuando se juntan de miles en miles, tiñen la orilla de rosa. Una de las postales más famosas de Kenia.",
+      "placeInfo": {
+        "label": "Nakuru",
+        "groups": [
+          {
+            "t": "Curiosidades",
+            "items": [
+              "Lago alcalino famoso por sus flamencos, que a veces se cuentan por cientos de miles y tiñen la orilla de rosa.",
+              "Es un santuario vallado de rinoceronte blanco y negro, y refugio de la rara jirafa de Rothschild."
+            ]
+          },
+          {
+            "t": "Bueno saber",
+            "items": [
+              "Los flamencos van y vienen según el nivel del agua: si hay pocos, el parque sigue mereciendo muchísimo por los rinocerontes.",
+              "A ~1.750 m de altitud."
+            ]
+          }
+        ]
+      },
+      "lodgeInfo": {
+        "label": "Lake Nakuru Lodge",
+        "groups": [
+          {
+            "t": "Cómo es",
+            "items": [
+              "Lodge clásico en alto, con vistas panorámicas a la reserva y al lago de Nakuru; pensión completa.",
+              "Habitaciones cómodas y piscina con vistas: una alternativa perfecta al safari de la tarde, sobre todo con niños cansados."
+            ]
+          },
+          {
+            "t": "Qué esperar",
+            "items": [
+              "Es de los alojamientos más 'de hotel' del viaje.",
+              "Desde las zonas comunes se ve la reserva: prismáticos a mano."
+            ]
+          },
+          {
+            "t": "Útil",
+            "items": [
+              "Bañadores a mano.",
+              "Capa de abrigo: Nakuru está en alto y refresca."
+            ]
+          }
+        ],
+        "amenities": [
+          "pool",
+          "fullboard",
+          "wifi",
+          "hotwater",
+          "views"
+        ]
+      }
+    },
+    {
+      "id": "d12",
+      "offset": 11,
+      "region": "kabarnet",
+      "place": "Último safari · traslado a Kabarnet (2,5 h)",
+      "lodging": "Bamba Project",
+      "board": "Pensión completa",
+      "title": "Bienvenidos a la familia Bamba",
+      "spot": "",
+      "script": "Último safari de la mañana en Nakuru y, después, unas dos horas y media hasta Kabarnet, en el corazón del Valle del Rift.\nAquí empieza otra parte preciosa y muy distinta: el Proyecto Bamba. Os recibe la familia Bamba, una asociación española que trabaja, con acción directa, para dar recursos y oportunidades a una pequeña comunidad local.\nA partir de hoy cambiáis los animales por las personas. Días de convivencia, de aprender, de aportar y de dejaros sorprender. Bienvenidos a la familia.",
+      "placeInfo": {
+        "label": "Kabarnet",
+        "groups": [
+          {
+            "t": "Curiosidades",
+            "items": [
+              "Kabarnet está en las tierras altas del Valle del Rift (~1.800–2.000 m), territorio del pueblo tugen.",
+              "Bamba Project es una asociación española de acción directa con la comunidad local."
+            ]
+          },
+          {
+            "t": "Bueno saber",
+            "items": [
+              "Son días de convivencia: ropa cómoda y discreta, y mejor preguntar antes de fotografiar.",
+              "Gran momento para que los niños jueguen con los de allí; el idioma importa menos de lo que parece.",
+              "De noche refresca por la altitud: una capa de abrigo."
+            ]
+          }
+        ]
+      },
+      "lodgeInfo": {
+        "label": "Bamba Project",
+        "groups": [
+          {
+            "t": "Cómo es",
+            "items": [
+              "Alojamiento sencillo dentro del proyecto solidario de la familia Bamba, en las tierras altas de Kabarnet.",
+              "Aquí el confort pasa a segundo plano: lo que de verdad importa, y lo que recordaréis, es la convivencia con la comunidad."
+            ]
+          },
+          {
+            "t": "Qué esperar",
+            "items": [
+              "Habitaciones básicas; el agua y la electricidad pueden ser limitadas.",
+              "Comida local sencilla y mucho contacto humano."
+            ]
+          },
+          {
+            "t": "Útil",
+            "items": [
+              "Power bank, frontal y ropa discreta y cómoda.",
+              "Algo de gel/toallitas y tu botella de agua."
+            ]
+          }
+        ],
+        "amenities": [
+          "basic",
+          "sharedbath",
+          "community",
+          "eleclimited"
+        ]
+      }
+    },
+    {
+      "id": "d13",
+      "offset": 12,
+      "region": "kabarnet",
+      "place": "Día de actividades en Bamba Project",
+      "lodging": "Bamba Project",
+      "board": "Pensión completa",
+      "title": "Arremangarse",
+      "spot": "",
+      "script": "Primer día completo en el Proyecto Bamba. Hoy toca arremangarse y participar en las actividades de la comunidad.\nPara vuestros hijos será una lección de vida difícil de igualar: verán cómo otros niños juegan, aprenden y viven con muchísimo menos, y casi siempre con una sonrisa enorme. Dejaos llevar y jugad con ellos: el idioma importa mucho menos de lo que pensáis.\nPor la noche, buen momento para grabar el vídeo del día. ¿Qué es lo que más os ha sorprendido hoy?",
+      "placeInfo": {
+        "label": "Kabarnet",
+        "groups": [
+          {
+            "t": "Curiosidades",
+            "items": [
+              "Kabarnet está en las tierras altas del Valle del Rift (~1.800–2.000 m), territorio del pueblo tugen.",
+              "Bamba Project es una asociación española de acción directa con la comunidad local."
+            ]
+          },
+          {
+            "t": "Bueno saber",
+            "items": [
+              "Son días de convivencia: ropa cómoda y discreta, y mejor preguntar antes de fotografiar.",
+              "Gran momento para que los niños jueguen con los de allí; el idioma importa menos de lo que parece.",
+              "De noche refresca por la altitud: una capa de abrigo."
+            ]
+          }
+        ]
+      },
+      "lodgeInfo": {
+        "label": "Bamba Project",
+        "groups": [
+          {
+            "t": "Cómo es",
+            "items": [
+              "Alojamiento sencillo dentro del proyecto solidario de la familia Bamba, en las tierras altas de Kabarnet.",
+              "Aquí el confort pasa a segundo plano: lo que de verdad importa, y lo que recordaréis, es la convivencia con la comunidad."
+            ]
+          },
+          {
+            "t": "Qué esperar",
+            "items": [
+              "Habitaciones básicas; el agua y la electricidad pueden ser limitadas.",
+              "Comida local sencilla y mucho contacto humano."
+            ]
+          },
+          {
+            "t": "Útil",
+            "items": [
+              "Power bank, frontal y ropa discreta y cómoda.",
+              "Algo de gel/toallitas y tu botella de agua."
+            ]
+          }
+        ],
+        "amenities": [
+          "basic",
+          "sharedbath",
+          "community",
+          "eleclimited"
+        ]
+      }
+    },
+    {
+      "id": "d14",
+      "offset": 13,
+      "region": "kabarnet",
+      "place": "Día de actividades en Bamba Project",
+      "lodging": "Bamba Project",
+      "board": "Pensión completa",
+      "title": "Otro ritmo",
+      "spot": "",
+      "script": "Segundo día en Bamba. Ya conocéis a la gente y a los niños, así que hoy todo fluye de otra manera. Día perfecto para esas conversaciones y momentos que no se pueden planificar.\nObservad, escuchad, preguntad. Y disfrutad del ritmo: aquí el tiempo va más despacio, y eso también es parte del regalo. No hace falta llenar cada minuto.\nSi os apetece, hoy que sean los niños quienes graben su propio vídeo contando lo que han hecho.",
+      "placeInfo": {
+        "label": "Kabarnet",
+        "groups": [
+          {
+            "t": "Curiosidades",
+            "items": [
+              "Kabarnet está en las tierras altas del Valle del Rift (~1.800–2.000 m), territorio del pueblo tugen.",
+              "Bamba Project es una asociación española de acción directa con la comunidad local."
+            ]
+          },
+          {
+            "t": "Bueno saber",
+            "items": [
+              "Son días de convivencia: ropa cómoda y discreta, y mejor preguntar antes de fotografiar.",
+              "Gran momento para que los niños jueguen con los de allí; el idioma importa menos de lo que parece.",
+              "De noche refresca por la altitud: una capa de abrigo."
+            ]
+          }
+        ]
+      },
+      "lodgeInfo": {
+        "label": "Bamba Project",
+        "groups": [
+          {
+            "t": "Cómo es",
+            "items": [
+              "Alojamiento sencillo dentro del proyecto solidario de la familia Bamba, en las tierras altas de Kabarnet.",
+              "Aquí el confort pasa a segundo plano: lo que de verdad importa, y lo que recordaréis, es la convivencia con la comunidad."
+            ]
+          },
+          {
+            "t": "Qué esperar",
+            "items": [
+              "Habitaciones básicas; el agua y la electricidad pueden ser limitadas.",
+              "Comida local sencilla y mucho contacto humano."
+            ]
+          },
+          {
+            "t": "Útil",
+            "items": [
+              "Power bank, frontal y ropa discreta y cómoda.",
+              "Algo de gel/toallitas y tu botella de agua."
+            ]
+          }
+        ],
+        "amenities": [
+          "basic",
+          "sharedbath",
+          "community",
+          "eleclimited"
+        ]
+      }
+    },
+    {
+      "id": "d15",
+      "offset": 14,
+      "region": "kabarnet",
+      "place": "Día de actividades en Bamba Project",
+      "lodging": "Bamba Project",
+      "board": "Pensión completa",
+      "title": "Lo que uno se lleva",
+      "spot": "",
+      "script": "Tercer día en Bamba, y posiblemente el de las despedidas, que siempre cuestan. Aprovechad cada rato que os quede.\nBuen momento para hacer fotos con las personas que habéis conocido, y para hablar con los niños de lo que se llevan de aquí: no cosas, sino una forma distinta de mirar el mundo y de valorar lo que tienen en casa.\nGuardad un hueco esta noche para el vídeo: ¿qué habéis aprendido aquí que no sabíais antes de venir?",
+      "placeInfo": {
+        "label": "Kabarnet",
+        "groups": [
+          {
+            "t": "Curiosidades",
+            "items": [
+              "Kabarnet está en las tierras altas del Valle del Rift (~1.800–2.000 m), territorio del pueblo tugen.",
+              "Bamba Project es una asociación española de acción directa con la comunidad local."
+            ]
+          },
+          {
+            "t": "Bueno saber",
+            "items": [
+              "Son días de convivencia: ropa cómoda y discreta, y mejor preguntar antes de fotografiar.",
+              "Gran momento para que los niños jueguen con los de allí; el idioma importa menos de lo que parece.",
+              "De noche refresca por la altitud: una capa de abrigo."
+            ]
+          }
+        ]
+      },
+      "lodgeInfo": {
+        "label": "Bamba Project",
+        "groups": [
+          {
+            "t": "Cómo es",
+            "items": [
+              "Alojamiento sencillo dentro del proyecto solidario de la familia Bamba, en las tierras altas de Kabarnet.",
+              "Aquí el confort pasa a segundo plano: lo que de verdad importa, y lo que recordaréis, es la convivencia con la comunidad."
+            ]
+          },
+          {
+            "t": "Qué esperar",
+            "items": [
+              "Habitaciones básicas; el agua y la electricidad pueden ser limitadas.",
+              "Comida local sencilla y mucho contacto humano."
+            ]
+          },
+          {
+            "t": "Útil",
+            "items": [
+              "Power bank, frontal y ropa discreta y cómoda.",
+              "Algo de gel/toallitas y tu botella de agua."
+            ]
+          }
+        ],
+        "amenities": [
+          "basic",
+          "sharedbath",
+          "community",
+          "eleclimited"
+        ]
+      }
+    },
+    {
+      "id": "d16",
+      "offset": 15,
+      "region": "nairobi",
+      "place": "Vuelo Eldoret–Nairobi · última noche",
+      "lodging": "Nairobi Kozi Suites",
+      "board": "Alojamiento y desayuno",
+      "title": "De vuelta a la ciudad",
+      "spot": "",
+      "script": "Hoy os despedís de Kabarnet. Traslado al aeropuerto de Eldoret y vuelo de vuelta a Nairobi, donde dormís la última noche en un hotel de ciudad.\nBuen momento para empezar a ordenar fotos y vídeos, y para que cada uno piense cuál ha sido su mejor momento del viaje. Os sorprenderá lo distintas que son las respuestas.\nY desde la app ya podéis montar el vídeo resumen con las fotos guardadas. Esta noche es perfecta para verlo todos juntos.",
+      "placeInfo": {
+        "label": "Nairobi",
+        "groups": [
+          {
+            "t": "Curiosidades",
+            "items": [
+              "Es la única capital del mundo con un Parque Nacional pegado a la ciudad, con leones y jirafas a la vista de los rascacielos.",
+              "Su nombre viene del maa 'Enkare Nyrobi': 'agua fría'. Está a ~1.795 m."
+            ]
+          },
+          {
+            "t": "Bueno saber",
+            "items": [
+              "Última oportunidad para recuerdos: café keniano, artesanía, telas.",
+              "El tráfico de Nairobi es intenso: dad margen de tiempo para el traslado al aeropuerto."
+            ]
+          }
+        ]
+      },
+      "lodgeInfo": {
+        "label": "Nairobi Kozi Suites",
+        "groups": [
+          {
+            "t": "Cómo es",
+            "items": [
+              "Aparthotel moderno en la ciudad de Nairobi; alojamiento y desayuno. Es la última noche del viaje.",
+              "Habitaciones tipo apartamento, con buena ducha caliente y espacio para reorganizar las maletas."
+            ]
+          },
+          {
+            "t": "Qué esperar",
+            "items": [
+              "Vuelta a la comodidad urbana: wifi decente, agua caliente y cama mullida tras los safaris.",
+              "Buen momento para una última cena tranquila y para hacer el equipaje."
+            ]
+          },
+          {
+            "t": "Útil",
+            "items": [
+              "Deja preparado lo del vuelo: la recogida al aeropuerto es de madrugada.",
+              "Carga todos los dispositivos esta noche."
+            ]
+          }
+        ],
+        "amenities": [
+          "wifi",
+          "breakfast",
+          "hotwater",
+          "kitchen",
+          "ac",
+          "city"
+        ]
+      }
+    },
+    {
+      "id": "d17",
+      "offset": 16,
+      "region": "nairobi",
+      "place": "Recogida de madrugada · aeropuerto",
+      "lodging": "Vuelo de vuelta",
+      "board": "—",
+      "title": "Kwaheri, Kenia",
+      "spot": "",
+      "script": "Última madrugada en Kenia. Recogida temprano y traslado al aeropuerto para volver a casa.\nOs lleváis tierra roja en las botas, cielos imposibles, elefantes, leones y, sobre todo, personas. Kwaheri, Kenia: adiós en suajili. Aunque no del todo, porque hay viajes que se quedan dentro para siempre.\nCuando lleguéis a casa y descanséis, terminad el vídeo del viaje con todas las fotos y guardadlo bien. Dentro de unos años lo veréis con vuestros hijos y volveréis aquí en un segundo. ¡Buen vuelo, familia!",
+      "placeInfo": {
+        "label": "Nairobi",
+        "groups": [
+          {
+            "t": "Curiosidades",
+            "items": [
+              "Es la única capital del mundo con un Parque Nacional pegado a la ciudad, con leones y jirafas a la vista de los rascacielos.",
+              "Su nombre viene del maa 'Enkare Nyrobi': 'agua fría'. Está a ~1.795 m."
+            ]
+          },
+          {
+            "t": "Bueno saber",
+            "items": [
+              "Última oportunidad para recuerdos: café keniano, artesanía, telas.",
+              "El tráfico de Nairobi es intenso: dad margen de tiempo para el traslado al aeropuerto."
+            ]
+          }
+        ]
+      },
+      "lodgeInfo": null
+    }
+  ]
+}
