@@ -46,6 +46,24 @@
   .t-vlog{background:linear-gradient(150deg,#7B4BB7,#311a55)}
   .t-conv{background:linear-gradient(150deg,#1F8A8A,#0c3535)}
   .t-suajili{background:linear-gradient(150deg,#B5341F,#1c1c1c)}
+  .doctile{display:flex;align-items:center;gap:14px;width:100%;margin-top:13px;border:1px solid var(--border);border-radius:18px;padding:16px 18px;cursor:pointer;text-align:left;color:#fff;background:linear-gradient(150deg,#2b3640,#161e25)}
+  .doctile .die{font-size:26px}
+  .doctile .dit{font-weight:800;font-size:16px}
+  .doctile .dis{font-size:12.5px;opacity:.8;margin-top:2px}
+  /* documentos */
+  .lockbox{max-width:360px;margin:34px auto;text-align:center}
+  .lockbox .lk{font-size:46px}
+  .lockbox h3{margin:10px 0 6px;font-size:20px}
+  .lockbox p{color:var(--muted);font-size:14px;line-height:1.5;margin:0 0 16px}
+  .pinrow{display:flex;flex-direction:column;gap:10px}
+  .pinrow input{padding:13px;border-radius:12px;border:1px solid var(--border);background:var(--card);color:var(--text);font-size:18px;text-align:center;letter-spacing:3px}
+  .docerr{color:#ff8a7a;font-size:13px;min-height:18px}
+  .dform label{display:block;font-size:12px;font-weight:700;color:var(--muted);margin:8px 0 4px}
+  .dform input,.dform textarea{width:100%;padding:11px 12px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--text);font-size:15px;font-family:inherit}
+  .drow{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:12px 12px 14px;margin-bottom:10px;position:relative}
+  .drow .drm{position:absolute;top:6px;right:8px;background:none;border:0;color:var(--muted);font-size:20px;cursor:pointer;z-index:2}
+  .dgrid2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .docbar{display:flex;gap:10px;position:sticky;bottom:calc(var(--nav) + 6px);background:rgba(11,20,28,.92);backdrop-filter:blur(6px);padding:10px 0;margin-top:14px}
   .topright{display:flex;align-items:center;gap:10px}
   .daychip{font-size:12px;font-weight:700;color:var(--accent);border:1px solid var(--border);border-radius:20px;padding:4px 10px}
   .iconbtn{background:none;border:0;color:var(--muted);font-size:18px;cursor:pointer;padding:4px}
@@ -265,6 +283,7 @@
 const $ = (id) => document.getElementById(id);
 const screen = $('screen');
 const esc = (t)=>(t||'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+const escA = (t)=>(t||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const fmt = (s)=>{s=Math.floor(s||0);return Math.floor(s/60)+':'+String(s%60).padStart(2,'0');};
 
 let M=null, tab='home', dayId=null;
@@ -339,6 +358,7 @@ $('nav').addEventListener('click',e=>{const b=e.target.closest('button'); if(b) 
 function render(){
   clearUrls();
   if(_lmap && !(tab==='viaje' && !dayId)){ try{_lmap.remove();}catch(e){} _lmap=null; }
+  if(tab!=='docs') docsLock();   // re-bloquea documentos al salir de la sección
   const ad=activeDay();
   $('daychip').textContent = ad.phase==='pre' ? `faltan ${-ad.off} días`
     : ad.phase==='post' ? '¡buen regreso!' : `Día ${ad.off+1} de 17`;
@@ -350,6 +370,7 @@ function render(){
   else if(tab==='conv') renderConv();
   else if(tab==='fotos') renderFotos(ad);
   else if(tab==='vlog') renderVlog(ad);
+  else if(tab==='docs') renderDocs();
   else renderSuajili();
 }
 function goHome(){ tab='home'; dayId=null; render(); window.scrollTo(0,0); }
@@ -374,10 +395,133 @@ async function renderHome(ad){
     {t:'conv',   icon:'💱', name:'Cambio',    sub: fx?`1 € ≈ ${fmtMoney(fx.rates.KES,'KES')} KES`:'Conversor de moneda'},
     {t:'suajili',icon:'🗣️', name:'Suajili',   sub:`${frases} frases con audio`},
   ];
+  const docSub=_docsBlob()?'Pasaportes, ETA, vuelos, seguro · protegido':'Guárdalo aquí · protegido con contraseña';
   screen.innerHTML=`<div class="home">
     <div class="hello">${shieldSVG(60)}<div><div class="hi">Jambo 👋</div><div class="histat">${esc(dayStatus)}</div></div></div>
     <div class="tiles">`+tiles.map(x=>`<button class="tile t-${x.t}" onclick="setTab('${x.t}')">
-      <span class="tie">${x.icon}</span><span class="tin">${esc(x.name)}</span><span class="tis">${esc(x.sub)}</span></button>`).join('')+`</div></div>`;
+      <span class="tie">${x.icon}</span><span class="tin">${esc(x.name)}</span><span class="tis">${esc(x.sub)}</span></button>`).join('')+`</div>
+    <button class="doctile" onclick="setTab('docs')">
+      <span class="die">🔐</span><div><div class="dit">Documentos</div><div class="dis">${esc(docSub)}</div></div>
+      <span style="margin-left:auto;color:var(--muted)">›</span></button>
+  </div>`;
+}
+
+/* ================= DOCUMENTOS (cifrado con contraseña) ================= */
+let _docs=null, _docsPin=null, _docsSalt=null, _docsUnlocked=false;
+const _b64=(buf)=>btoa(String.fromCharCode(...new Uint8Array(buf)));
+const _ub64=(s)=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
+const _docsBlob=()=>lsGet('kenia.docs',null);
+async function _deriveKey(pin,salt){
+  const km=await crypto.subtle.importKey('raw',new TextEncoder().encode(pin),'PBKDF2',false,['deriveKey']);
+  return crypto.subtle.deriveKey({name:'PBKDF2',salt,iterations:150000,hash:'SHA-256'},km,{name:'AES-GCM',length:256},false,['encrypt','decrypt']);
+}
+async function docsSave(){
+  const key=await _deriveKey(_docsPin,_docsSalt);
+  const iv=crypto.getRandomValues(new Uint8Array(12));
+  const ct=await crypto.subtle.encrypt({name:'AES-GCM',iv},key,new TextEncoder().encode(JSON.stringify(_docs)));
+  localStorage.setItem('kenia.docs',JSON.stringify({v:1,salt:_b64(_docsSalt),iv:_b64(iv),ct:_b64(ct)}));
+}
+async function docsUnlock(pin){
+  const blob=_docsBlob(), salt=_ub64(blob.salt), iv=_ub64(blob.iv), ct=_ub64(blob.ct);
+  const key=await _deriveKey(pin,salt);
+  const pt=await crypto.subtle.decrypt({name:'AES-GCM',iv},key,ct); // lanza error si la contraseña es incorrecta
+  _docs=JSON.parse(new TextDecoder().decode(pt)); _docsPin=pin; _docsSalt=salt; _docsUnlocked=true;
+}
+async function docsSetup(pin){
+  _docs={personas:[{}],vuelos:[],seguro:{},contactos:[],medico:''};
+  _docsPin=pin; _docsSalt=crypto.getRandomValues(new Uint8Array(16)); _docsUnlocked=true;
+  await docsSave();
+}
+function docsLock(){ _docs=null; _docsPin=null; _docsSalt=null; _docsUnlocked=false; }
+
+function renderDocs(){
+  if(!window.crypto||!crypto.subtle){ screen.innerHTML='<div class="center">Este navegador no permite cifrar aquí. Ábrela desde el enlace https.</div>'; return; }
+  if(!_docsBlob() && !_docsUnlocked) return renderDocsSetup();
+  if(!_docsUnlocked) return renderDocsLock();
+  return renderDocsForm();
+}
+function renderDocsSetup(){
+  screen.innerHTML=`<div class="lockbox"><div class="lk">🔐</div><h3>Documentos protegidos</h3>
+    <p>Crea una contraseña para guardar aquí pasaportes, ETA, vuelos y seguro. Se guardan <b>cifrados solo en este móvil</b>; no se suben a internet. Si la olvidas, no se podrán recuperar.</p>
+    <div class="pinrow">
+      <input id="pin1" type="password" autocomplete="new-password" inputmode="numeric" placeholder="Contraseña">
+      <input id="pin2" type="password" autocomplete="new-password" inputmode="numeric" placeholder="Repite la contraseña">
+      <div class="docerr" id="docerr"></div>
+      <button class="btn" id="docCreate">Crear y entrar</button>
+    </div></div>`;
+  $('docCreate').onclick=async()=>{ const a=$('pin1').value,b=$('pin2').value;
+    if(a.length<4){ $('docerr').textContent='Mínimo 4 caracteres.'; return; }
+    if(a!==b){ $('docerr').textContent='Las contraseñas no coinciden.'; return; }
+    await docsSetup(a); renderDocsForm(); };
+}
+function renderDocsLock(){
+  screen.innerHTML=`<div class="lockbox"><div class="lk">🔒</div><h3>Sección protegida</h3>
+    <p>Esta sección contiene información sensible (pasaportes, vuelos, seguro). Introduce tu contraseña para verla.</p>
+    <div class="pinrow">
+      <input id="pin1" type="password" autocomplete="current-password" inputmode="numeric" placeholder="Contraseña">
+      <div class="docerr" id="docerr"></div>
+      <button class="btn" id="docEnter">Entrar</button>
+    </div></div>`;
+  const go=async()=>{ try{ await docsUnlock($('pin1').value); renderDocsForm(); }catch(e){ $('docerr').textContent='Contraseña incorrecta.'; const p=$('pin1'); if(p){p.value='';p.focus();} } };
+  $('docEnter').onclick=go;
+  $('pin1').addEventListener('keydown',e=>{ if(e.key==='Enter') go(); });
+}
+function renderDocsForm(){
+  const d=_docs;
+  const person=(p,i)=>`<div class="drow" data-pi="${i}"><button class="drm" data-rmp="${i}">×</button>
+     <label>Nombre</label><input data-f="pn" value="${escA(p.nombre)}">
+     <div class="dgrid2"><div><label>Nº pasaporte</label><input data-f="pp" value="${escA(p.pasaporte)}"></div>
+       <div><label>Caduca</label><input data-f="pc" value="${escA(p.caducidad)}" placeholder="dd/mm/aaaa"></div></div>
+     <label>ETA / visado (ref.)</label><input data-f="pe" value="${escA(p.eta)}"></div>`;
+  const flight=(f,i)=>`<div class="drow" data-vi="${i}"><button class="drm" data-rmv="${i}">×</button>
+     <label>Vuelo</label><input data-f="fd" value="${escA(f.desc)}" placeholder="p. ej. Madrid–Nairobi">
+     <div class="dgrid2"><div><label>Localizador</label><input data-f="fl" value="${escA(f.loc)}"></div>
+       <div><label>Fecha / hora</label><input data-f="ft" value="${escA(f.fecha)}"></div></div></div>`;
+  const contact=(c,i)=>`<div class="drow" data-ci="${i}"><button class="drm" data-rmc="${i}">×</button>
+     <div class="dgrid2"><div><label>Nombre</label><input data-f="cn" value="${escA(c.nombre)}"></div>
+       <div><label>Teléfono</label><input data-f="ct" value="${escA(c.tel)}"></div></div></div>`;
+  screen.innerHTML=`<div class="kicker">🔐 DOCUMENTOS</div>
+    <div class="dform">
+      <div class="section" style="font-size:16px">Pasaportes y ETA</div>
+      <div id="dPersonas">${(d.personas||[]).map(person).join('')}</div>
+      <button class="btn ghost sm" id="addP">+ Persona</button>
+      <div class="section" style="font-size:16px">Vuelos</div>
+      <div id="dVuelos">${(d.vuelos||[]).map(flight).join('')}</div>
+      <button class="btn ghost sm" id="addV">+ Vuelo</button>
+      <div class="section" style="font-size:16px">Seguro de viaje</div>
+      <div class="drow">
+        <label>Compañía</label><input id="sgComp" value="${escA(d.seguro&&d.seguro.comp)}">
+        <div class="dgrid2"><div><label>Nº póliza</label><input id="sgPol" value="${escA(d.seguro&&d.seguro.pol)}"></div>
+          <div><label>Tel. asistencia</label><input id="sgTel" value="${escA(d.seguro&&d.seguro.tel)}"></div></div>
+      </div>
+      <div class="section" style="font-size:16px">Contactos de emergencia</div>
+      <div id="dContactos">${(d.contactos||[]).map(contact).join('')}</div>
+      <button class="btn ghost sm" id="addC">+ Contacto</button>
+      <div class="section" style="font-size:16px">Notas médicas</div>
+      <textarea id="dMed" rows="3" placeholder="Alergias, grupo sanguíneo, medicación de cada uno...">${escA(d.medico)}</textarea>
+      <div class="docbar">
+        <button class="btn" id="docSaveBtn" style="flex:1">💾 Guardar</button>
+        <button class="btn ghost" id="docLockBtn">🔒 Bloquear</button>
+      </div>
+      <p class="small muted">Cifrado en este móvil con tu contraseña. No se sube a internet ni a GitHub.</p>
+    </div>`;
+  $('addP').onclick=()=>{ collectDocs(); _docs.personas.push({}); renderDocsForm(); };
+  $('addV').onclick=()=>{ collectDocs(); _docs.vuelos.push({}); renderDocsForm(); };
+  $('addC').onclick=()=>{ collectDocs(); _docs.contactos.push({}); renderDocsForm(); };
+  screen.querySelectorAll('[data-rmp]').forEach(b=>b.onclick=()=>{ collectDocs(); _docs.personas.splice(+b.dataset.rmp,1); renderDocsForm(); });
+  screen.querySelectorAll('[data-rmv]').forEach(b=>b.onclick=()=>{ collectDocs(); _docs.vuelos.splice(+b.dataset.rmv,1); renderDocsForm(); });
+  screen.querySelectorAll('[data-rmc]').forEach(b=>b.onclick=()=>{ collectDocs(); _docs.contactos.splice(+b.dataset.rmc,1); renderDocsForm(); });
+  $('docSaveBtn').onclick=async()=>{ collectDocs(); await docsSave(); const b=$('docSaveBtn'); if(b){b.textContent='✓ Guardado';setTimeout(()=>{const x=$('docSaveBtn');if(x)x.textContent='💾 Guardar';},1500);} };
+  $('docLockBtn').onclick=()=>{ docsLock(); goHome(); };
+}
+function collectDocs(){
+  if(!_docs) return;
+  const val=(r,f)=>{const el=r.querySelector('[data-f="'+f+'"]');return el?el.value:'';};
+  _docs.personas=[...document.querySelectorAll('#dPersonas .drow')].map(r=>({nombre:val(r,'pn'),pasaporte:val(r,'pp'),caducidad:val(r,'pc'),eta:val(r,'pe')}));
+  _docs.vuelos=[...document.querySelectorAll('#dVuelos .drow')].map(r=>({desc:val(r,'fd'),loc:val(r,'fl'),fecha:val(r,'ft')}));
+  _docs.contactos=[...document.querySelectorAll('#dContactos .drow')].map(r=>({nombre:val(r,'cn'),tel:val(r,'ct')}));
+  _docs.seguro={comp:($('sgComp')||{}).value||'',pol:($('sgPol')||{}).value||'',tel:($('sgTel')||{}).value||''};
+  _docs.medico=($('dMed')||{}).value||'';
 }
 
 /* ================= VIAJE ================= */
